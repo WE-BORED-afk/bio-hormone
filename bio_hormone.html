@@ -1,0 +1,307 @@
+```html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบระบบต่อมไร้ท่อกดตอบในแผนผัง (Interactive Endocrine Flowchart)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Mali:wght@500;600;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f1f5f9;
+        }
+        .handwritten-font {
+            font-family: 'Mali', cursive;
+        }
+        .brand-font {
+            font-family: 'Fredoka', sans-serif;
+        }
+        /* Notebook Paper Style */
+        .notebook-paper {
+            background-color: #fdfdfb;
+            background-image: 
+                linear-gradient(#e2e8f0 1.2px, transparent 1.2px);
+            background-size: 100% 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .notebook-margin-line {
+            position: absolute;
+            top: 0;
+            left: 50px;
+            bottom: 0;
+            width: 2px;
+            background-color: #f43f5e;
+            opacity: 0.7;
+            z-index: 10;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        /* Popover animation */
+        @keyframes popIn {
+            0% { transform: scale(0.9) translateY(10px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .popover-animate {
+            animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        /* Interactive nodes styling */
+        .node-base {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .node-base:active {
+            transform: scale(0.96);
+        }
+        /* Shake effect on wrong answer */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+        .shake-active {
+            animation: shake 0.4s ease-in-out;
+        }
+        /* Floating selection box styling */
+        .glow-active {
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.4);
+            border-color: #f43f5e !important;
+            background-color: #fff1f2 !important;
+        }
+        .solved-active {
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+            border-color: #10b981 !important;
+            background-color: #f0fdf4 !important;
+            color: #065f46 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col pb-12 relative">
+
+    <!-- Top Sticky Header -->
+    <header class="bg-white/95 backdrop-blur border-b border-slate-200 sticky top-0 z-40 px-6 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-rose-500 text-white p-2.5 rounded-2xl shadow-md shadow-rose-100">
+                    <i data-lucide="notebook-tabs" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-bold text-slate-900 flex flex-wrap items-center gap-2">
+                        <span class="handwritten-font text-rose-600">Endocrine System: ระบบต่อมไร้ท่อ</span>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-bold">BIOLOGY 5</span>
+                    </h1>
+                    <p class="text-xs text-slate-500">แบบทดสอบเวอร์ชันกดตอบบนแผนผังสมุดจดเรียนรู้</p>
+                </div>
+            </div>
+
+            <!-- Controller Block -->
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- Mode Switcher -->
+                <div class="bg-slate-100 p-1 rounded-2xl flex gap-1 border border-slate-200">
+                    <button id="btn-mode-study" onclick="switchMode('study')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 bg-white text-slate-800 shadow-sm">
+                        <i data-lucide="eye" class="w-3.5 h-3.5 text-rose-500"></i>
+                        <span>โหมดเรียนรู้ (Study)</span>
+                    </button>
+                    <button id="btn-mode-quiz" onclick="switchMode('quiz')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                        <i data-lucide="swatch-book" class="w-3.5 h-3.5"></i>
+                        <span>โหมดควิซในแผนผัง (Quiz)</span>
+                    </button>
+                </div>
+
+                <!-- Zoomers -->
+                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-2 py-1">
+                    <button onclick="adjustZoom(-0.1)" class="p-1 rounded text-slate-500 hover:bg-slate-100" title="ย่อควิซ">
+                        <i data-lucide="zoom-out" class="w-4 h-4"></i>
+                    </button>
+                    <span id="zoom-indicator" class="text-xs font-mono text-slate-600 px-2 min-w-[45px] text-center">100%</span>
+                    <button onclick="adjustZoom(0.1)" class="p-1 rounded text-slate-500 hover:bg-slate-100" title="ขยายควิซ">
+                        <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Reset -->
+                <button onclick="resetApp()" class="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors" title="เริ่มใหม่ทั้งหมด">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Score & Navigation bar -->
+    <div class="max-w-7xl w-full mx-auto px-4 mt-4">
+        <div class="bg-gradient-to-r from-rose-500 to-amber-500 text-white rounded-2xl p-4 shadow-md flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-white/20 p-2 rounded-xl">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-amber-200"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm font-bold opacity-90">คู่มือแบบทดสอบ</h2>
+                    <p id="instruction-banner" class="text-xs text-rose-50">โหมดเรียนรู้: แตะกล่องข้อความใดๆ บนแผนผัง เพื่อเปิดดูหน้าที่และความรู้ทันที!</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <div class="text-center">
+                    <div class="text-[10px] uppercase opacity-75 tracking-wider font-semibold">คะแนนตอบถูก</div>
+                    <div class="text-lg font-bold flex items-center justify-center gap-1">
+                        <span id="stat-score" class="brand-font text-2xl text-amber-200">0</span>
+                        <span>/</span>
+                        <span id="stat-total">32</span>
+                    </div>
+                </div>
+                <div class="text-center border-l border-white/20 pl-6">
+                    <div class="text-[10px] uppercase opacity-75 tracking-wider font-semibold">สตรีคคอมโบ</div>
+                    <div id="stat-streak" class="text-xl font-black text-amber-300">🔥 0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 lg:p-6 flex flex-col">
+        
+        <!-- Notebook Container Wrapper (Scrollable area) -->
+        <div class="w-full bg-slate-200/50 rounded-3xl p-2 border border-slate-300 shadow-inner overflow-hidden flex flex-col">
+            
+            <!-- Horizontal scrollable viewport -->
+            <div class="overflow-auto min-h-[700px] p-4 lg:p-8" id="scroller">
+                
+                <!-- Notebook Mockup Paper Page -->
+                <div class="notebook-paper rounded-2xl p-8 min-w-[1250px] mx-auto border border-slate-300" id="flowchart-board">
+                    <!-- Red Margin Rule -->
+                    <div class="notebook-margin-line"></div>
+
+                    <!-- Authentic Student Handwritten Metadata Header -->
+                    <div class="flex justify-between items-center text-xs text-slate-400 border-b border-rose-200 pb-3 pl-16 mb-8 select-none">
+                        <div class="flex items-center gap-4">
+                            <span class="handwritten-font text-indigo-500 font-bold">นางสาวรดา กันทะจันทร์ ม. 6/9 เลขที่ 28</span>
+                            <span>|</span>
+                            <span class="font-semibold tracking-wider text-slate-500">BIOLOGY 5</span>
+                        </div>
+                        <div class="handwritten-font text-emerald-600 font-bold">ครูริลญ่า ธีรโชติกรกุล #Cheeva_KruJame</div>
+                    </div>
+
+                    <!-- Flowchart SVG Connections Container -->
+                    <svg id="svg-connections" class="absolute inset-0 w-full h-full pointer-events-none z-0"></svg>
+
+                    <!-- Main Flowchart Grid structure (aligned left to right) -->
+                    <div class="flex flex-row items-center gap-16 relative z-20 pl-16 py-10" id="zoomable-content" style="transform-origin: top left; transition: transform 0.15s ease-out;">
+                        
+                        <!-- Column 1: ROOT -->
+                        <div class="flex-shrink-0">
+                            <div id="node-root" class="bg-rose-500 text-white p-5 rounded-2xl shadow-md border-2 border-rose-600 text-center w-40 relative">
+                                <div class="text-[9px] uppercase tracking-widest font-black opacity-75 brand-font">BIOLOGY</div>
+                                <div class="text-lg font-extrabold mt-1">Hormone</div>
+                                <div class="text-[10px] opacity-90 mt-0.5">สารฮอร์โมน</div>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: The Main 9 Glands Rows (Vertical stack) -->
+                        <div class="flex flex-col gap-10">
+                            
+                            <!-- ROW 1: Pituitary -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-pituitary" onclick="nodeClicked('pituitary', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm relative">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">1. Gland</div>
+                                    <div class="name-en">1. Pituitary</div>
+                                    <div class="text-[9px] text-slate-500 font-medium">(Hypothalamus)</div>
+                                </div>
+
+                                <!-- Sub-branches for Pituitary -->
+                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                    
+                                    <!-- 1. Anterior Sub-tree -->
+                                    <div class="flex items-center gap-6">
+                                        <div id="n-anterior" onclick="nodeClicked('anterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center relative shadow-sm">
+                                            <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
+                                            <span class="name-en">1. anterior</span>
+                                        </div>
+                                        
+                                        <!-- Anterior Hormones List -->
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
+                                            <div id="n-gh" onclick="nodeClicked('gh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">1. GH</span>
+                                            </div>
+                                            
+                                            <!-- Gn branching sub group -->
+                                            <div class="bg-indigo-50/50 p-2 rounded-xl border border-indigo-200 flex flex-col gap-1.5">
+                                                <div id="n-gn" onclick="nodeClicked('gn', this)" class="node-base cursor-pointer bg-indigo-50 hover:bg-indigo-100 border border-indigo-300 text-indigo-950 px-2 py-1 rounded text-xs font-bold w-48 relative">
+                                                    <span class="name-en">2. Gn</span>
+                                                </div>
+                                                <div class="flex flex-col gap-1.5 pl-3 border-l-2 border-indigo-300">
+                                                    <div id="n-fsh" onclick="nodeClicked('fsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold relative">
+                                                        <span class="name-en">1. FSH</span>
+                                                    </div>
+                                                    <div id="n-lh" onclick="nodeClicked('lh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold relative">
+                                                        <span class="name-en">2. LH</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="n-acth" onclick="nodeClicked('acth', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">3. ACTH</span>
+                                            </div>
+                                            <div id="n-tsh" onclick="nodeClicked('tsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">4. TSH</span>
+                                            </div>
+                                            <div id="n-prolactin" onclick="nodeClicked('prolactin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">5. Prolactin</span>
+                                            </div>
+                                            <div id="n-endorphin" onclick="nodeClicked('endorphin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">6. Endorphin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 2. Posterior Sub-tree -->
+                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                        <div id="n-posterior" onclick="nodeClicked('posterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center relative shadow-sm">
+                                            <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
+                                            <span class="name-en">2. posterior</span>
+                                        </div>
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
+                                            <div id="n-adh" onclick="nodeClicked('adh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">1. ADH</span>
+                                            </div>
+                                            <div id="n-oxytocin" onclick="nodeClicked('oxytocin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                                <span class="name-en">2. Oxytocin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- ROW 2: Pineal -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-pineal" onclick="nodeClicked('pineal', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm relative">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">2. Gland</div>
+                                    <span class="name-en">2. Pineal</span>
+                                </div>
+                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-melatonin" onclick="nodeClicked('melatonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                        <span class="name-en">Melatonin</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 3: Parathyroid -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-parathyroid" onclick="nodeClicked('parathyroid', this)" class="nod
