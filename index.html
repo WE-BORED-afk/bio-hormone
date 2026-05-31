@@ -223,7 +223,7 @@
                                 </div>
 
                                 <!-- Sub-branches for Pituitary -->
-                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex flex-col gap-4 pl-10">
                                     
                                     <!-- 1. Anterior Sub-tree -->
                                     <div class="flex items-center gap-6">
@@ -233,7 +233,7 @@
                                         </div>
                                         
                                         <!-- Anterior Hormones List -->
-                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
+                                        <div class="flex flex-col gap-2 pl-2 py-1 gap-3">
                                             <div id="n-gh" onclick="nodeClicked('gh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">1. GH</span>
                                             </div>
@@ -243,7 +243,7 @@
                                                 <div id="n-gn" onclick="nodeClicked('gn', this)" class="node-base cursor-pointer bg-indigo-50 hover:bg-indigo-100 border border-indigo-300 text-indigo-950 px-2 py-1 rounded text-xs font-bold w-48">
                                                     <span class="name-en">2. Gn</span>
                                                 </div>
-                                                <div class="flex flex-col gap-1.5 pl-3 border-l-2 border-indigo-300">
+                                                <div class="flex flex-col gap-1.5 pl-3">
                                                     <div id="n-fsh" onclick="nodeClicked('fsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold">
                                                         <span class="name-en">1. FSH</span>
                                                     </div>
@@ -269,12 +269,12 @@
                                     </div>
 
                                     <!-- 2. Posterior Sub-tree -->
-                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                    <div class="flex items-center gap-6 pt-4">
                                         <div id="n-posterior" onclick="nodeClicked('posterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
                                             <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
                                             <span class="name-en">2. posterior</span>
                                         </div>
-                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
+                                        <div class="flex flex-col gap-2 pl-2 py-1 gap-3">
                                             <div id="n-adh" onclick="nodeClicked('adh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">1. ADH</span>
                                             </div>
@@ -293,7 +293,7 @@
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">2. Gland</div>
                                     <span class="name-en">2. Pineal</span>
                                 </div>
-                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex items-center gap-6 pl-10">
                                     <div id="n-melatonin" onclick="nodeClicked('melatonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">Melatonin</span>
                                     </div>
@@ -306,7 +306,7 @@
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">3. Gland</div>
                                     <span class="name-en">3. Parathyroid</span>
                                 </div>
-                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex items-center gap-6 pl-10">
                                     <div id="n-pth" onclick="nodeClicked('pth', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">PTH</span>
                                     </div>
@@ -319,7 +319,7 @@
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">4. Gland</div>
                                     <span class="name-en">4. Thyroid</span>
                                 </div>
-                                <div class="flex flex-col gap-2 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex flex-col gap-2 pl-10">
                                     <div id="n-calcitonin" onclick="nodeClicked('calcitonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">1. calcitonin</span>
                                     </div>
@@ -335,7 +335,7 @@
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">5. Gland</div>
                                     <span class="name-en">5. Thymus</span>
                                 </div>
-                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex items-center gap-6 pl-10">
                                     <div id="n-thymosin" onclick="nodeClicked('thymosin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">thymosin</span>
                                     </div>
@@ -349,7 +349,7 @@
                                     <span class="name-en">6. Adrenal</span>
                                 </div>
                                 
-                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex flex-col gap-4 pl-10">
                                     <!-- Cortex Sub-branch -->
                                     <div class="flex items-center gap-6">
                                         <div id="n-cortex" onclick="nodeClicked('cortex', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
@@ -370,7 +370,7 @@
                                     </div>
 
                                     <!-- Medulla Sub-branch -->
-                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                    <div class="flex items-center gap-6 pt-4">
                                         <div id="n-medulla" onclick="nodeClicked('medulla', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
                                             <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
                                             <span class="name-en">2. medulla</span>
@@ -394,7 +394,7 @@
                                     <div class="name-en">7. Pancreas</div>
                                     <div class="text-[9px] text-slate-500 font-medium">(Islets of Langerhans)</div>
                                 </div>
-                                <div class="flex flex-col gap-2 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex flex-col gap-2 pl-10">
                                     <div id="n-insulin" onclick="nodeClicked('insulin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">1. Insulin</span>
                                     </div>
@@ -411,7 +411,7 @@
                                     <span class="name-en">8. Gonads</span>
                                 </div>
                                 
-                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex flex-col gap-4 pl-10">
                                     <!-- Testis -->
                                     <div class="flex items-center gap-6">
                                         <div id="n-testis" onclick="nodeClicked('testis', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
@@ -425,7 +425,7 @@
                                     </div>
 
                                     <!-- Ovary -->
-                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                    <div class="flex items-center gap-6 pt-4">
                                         <div id="n-ovary" onclick="nodeClicked('ovary', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
                                             <span class="name-en">2. Ovary</span>
                                         </div>
@@ -447,7 +447,7 @@
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">9. Placenta</div>
                                     <span class="name-en">9. Placenta</span>
                                 </div>
-                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                <div class="flex items-center gap-6 pl-10">
                                     <div id="n-hcg" onclick="nodeClicked('hcg', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">hCG</span>
                                     </div>
@@ -940,29 +940,37 @@
             const bRect = board.getBoundingClientRect();
 
             const parentMappings = [
-                { parent: 'root', childs: ['pituitary', 'pineal', 'parathyroid', 'thyroid', 'thymus', 'adrenal', 'pancreas', 'gonads', 'placenta'] },
-                { parent: 'pituitary', childs: ['anterior', 'posterior'] },
-                { parent: 'anterior', childs: ['gh', 'gn', 'acth', 'tsh', 'prolactin', 'endorphin'] },
-                { parent: 'posterior', childs: ['adh', 'oxytocin'] },
-                { parent: 'pineal', childs: ['melatonin'] },
-                { parent: 'parathyroid', childs: ['pth'] },
-                { parent: 'thyroid', childs: ['calcitonin', 'thyroxin'] },
-                { parent: 'thymus', childs: ['thymosin'] },
-                { parent: 'adrenal', childs: ['cortex', 'medulla'] },
-                { parent: 'cortex', childs: ['glucocorticoid', 'mineralocorticoid', 'androgen'] },
-                { parent: 'medulla', childs: ['epinephrine', 'norepinephrine'] },
-                { parent: 'pancreas', childs: ['insulin', 'glucagon'] },
-                { parent: 'gonads', childs: ['testis', 'ovary'] },
-                { parent: 'testis', childs: ['testosteron'] },
-                { parent: 'ovary', childs: ['estrogen', 'progesterone'] }
+                { parent: 'root', childs: ['pituitary', 'pineal', 'parathyroid', 'thyroid', 'thymus', 'adrenal', 'pancreas', 'gonads', 'placenta'], level: 0 },
+                { parent: 'pituitary', childs: ['anterior', 'posterior'], level: 1 },
+                { parent: 'anterior', childs: ['gh', 'gn', 'acth', 'tsh', 'prolactin', 'endorphin'], level: 2 },
+                { parent: 'gn', childs: ['fsh', 'lh'], level: 3 },
+                { parent: 'posterior', childs: ['adh', 'oxytocin'], level: 2 },
+                { parent: 'pineal', childs: ['melatonin'], level: 1 },
+                { parent: 'parathyroid', childs: ['pth'], level: 1 },
+                { parent: 'thyroid', childs: ['calcitonin', 'thyroxin'], level: 1 },
+                { parent: 'thymus', childs: ['thymosin'], level: 1 },
+                { parent: 'adrenal', childs: ['cortex', 'medulla'], level: 1 },
+                { parent: 'cortex', childs: ['glucocorticoid', 'mineralocorticoid', 'androgen'], level: 2 },
+                { parent: 'medulla', childs: ['epinephrine', 'norepinephrine'], level: 2 },
+                { parent: 'pancreas', childs: ['insulin', 'glucagon'], level: 1 },
+                { parent: 'gonads', childs: ['testis', 'ovary'], level: 1 },
+                { parent: 'testis', childs: ['testosteron'], level: 2 },
+                { parent: 'ovary', childs: ['estrogen', 'progesterone'], level: 2 }
+            ];
+
+            const levelStyles = [
+                { stroke: '#f59e0b', width: '2.5' },
+                { stroke: '#8b5cf6', width: '2' },
+                { stroke: '#06b6d4', width: '1.5' },
+                { stroke: '#10b981', width: '1.5' },
             ];
 
             parentMappings.forEach(group => {
                 let pEl = document.getElementById(`n-${group.parent}`);
                 if (group.parent === 'root') pEl = document.getElementById('node-root');
-
                 if (!pEl) return;
                 const pRect = pEl.getBoundingClientRect();
+                const style = levelStyles[Math.min(group.level, levelStyles.length - 1)];
 
                 group.childs.forEach(child => {
                     let realChildId = child;
@@ -970,23 +978,18 @@
 
                     const cEl = document.getElementById(`n-${realChildId}`);
                     if (!cEl) return;
-
                     const cRect = cEl.getBoundingClientRect();
 
                     const x1 = pRect.right - bRect.left;
                     const y1 = pRect.top + (pRect.height / 2) - bRect.top;
-
                     const x2 = cRect.left - bRect.left;
                     const y2 = cRect.top + (cRect.height / 2) - bRect.top;
-
-                    const midX = x1 + (x2 - x1) * 0.45;
+                    const midX = x1 + 24;
 
                     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
                     const pathData = `M ${x1} ${y1} L ${midX} ${y1} L ${midX} ${y2} L ${x2} ${y2}`;
                     path.setAttribute('d', pathData);
                     path.setAttribute('fill', 'none');
-                    path.setAttribute('stroke', '#f43f5e');
-                    path.setAttribute('stroke-width', '2');
                     path.setAttribute('stroke-linecap', 'round');
                     path.setAttribute('stroke-linejoin', 'round');
 
@@ -995,15 +998,17 @@
                         const cId = realChildId;
                         const isPSolved = (pId === 'root' || quizStatus[pId]);
                         const isCSolved = quizStatus[cId];
-
                         if (isPSolved && isCSolved) {
                             path.setAttribute('stroke', '#10b981');
                             path.setAttribute('stroke-width', '2.5');
                         } else {
                             path.setAttribute('stroke', '#cbd5e1');
+                            path.setAttribute('stroke-width', '1.5');
                         }
+                    } else {
+                        path.setAttribute('stroke', style.stroke);
+                        path.setAttribute('stroke-width', style.width);
                     }
-
                     svg.appendChild(path);
                 });
             });
