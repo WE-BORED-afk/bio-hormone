@@ -65,6 +65,7 @@
         /* Interactive nodes styling */
         .node-base {
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
         }
         .node-base:active {
             transform: scale(0.96);
@@ -80,7 +81,7 @@
         }
         /* Floating selection box styling */
         .glow-active {
-            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.4);
+            box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.5);
             border-color: #f43f5e !important;
             background-color: #fff1f2 !important;
         }
@@ -180,21 +181,19 @@
         <div class="w-full bg-slate-200/50 rounded-3xl p-2 border border-slate-300 shadow-inner overflow-hidden flex flex-col">
             
             <!-- Horizontal scrollable viewport -->
-            <div class="overflow-auto min-h-[700px] p-4 lg:p-8" id="scroller">
+            <div class="overflow-auto min-h-[700px] p-4 lg:p-8 relative" id="scroller">
                 
                 <!-- Notebook Mockup Paper Page -->
                 <div class="notebook-paper rounded-2xl p-8 min-w-[1250px] mx-auto border border-slate-300" id="flowchart-board">
                     <!-- Red Margin Rule -->
-                    <div class="notebook-margin-line"></div>
+                    <div class="notebook-margin-line font-normal"></div>
 
-                    <!-- Authentic Student Handwritten Metadata Header -->
+                    <!-- Clean Header (Names Removed) -->
                     <div class="flex justify-between items-center text-xs text-slate-400 border-b border-rose-200 pb-3 pl-16 mb-8 select-none">
                         <div class="flex items-center gap-4">
-                            <span class="handwritten-font text-indigo-500 font-bold">นางสาวรดา กันทะจันทร์ ม. 6/9 เลขที่ 28</span>
-                            <span>|</span>
-                            <span class="font-semibold tracking-wider text-slate-500">BIOLOGY 5</span>
+                            <span class="font-semibold tracking-wider text-slate-500">BIOLOGY 5: Interactive Learning Sheet</span>
                         </div>
-                        <div class="handwritten-font text-emerald-600 font-bold">ครูริลญ่า ธีรโชติกรกุล #Cheeva_KruJame</div>
+                        <div class="handwritten-font text-rose-500 font-bold">แผนผังและแบบทดสอบระบบต่อมไร้ท่อ</div>
                     </div>
 
                     <!-- Flowchart SVG Connections Container -->
@@ -217,7 +216,7 @@
                             
                             <!-- ROW 1: Pituitary -->
                             <div class="flex items-center gap-8">
-                                <div id="n-pituitary" onclick="nodeClicked('pituitary', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm relative">
+                                <div id="n-pituitary" onclick="nodeClicked('pituitary', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">1. Gland</div>
                                     <div class="name-en">1. Pituitary</div>
                                     <div class="text-[9px] text-slate-500 font-medium">(Hypothalamus)</div>
@@ -228,42 +227,42 @@
                                     
                                     <!-- 1. Anterior Sub-tree -->
                                     <div class="flex items-center gap-6">
-                                        <div id="n-anterior" onclick="nodeClicked('anterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center relative shadow-sm">
+                                        <div id="n-anterior" onclick="nodeClicked('anterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
                                             <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
                                             <span class="name-en">1. anterior</span>
                                         </div>
                                         
                                         <!-- Anterior Hormones List -->
                                         <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
-                                            <div id="n-gh" onclick="nodeClicked('gh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-gh" onclick="nodeClicked('gh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">1. GH</span>
                                             </div>
                                             
                                             <!-- Gn branching sub group -->
                                             <div class="bg-indigo-50/50 p-2 rounded-xl border border-indigo-200 flex flex-col gap-1.5">
-                                                <div id="n-gn" onclick="nodeClicked('gn', this)" class="node-base cursor-pointer bg-indigo-50 hover:bg-indigo-100 border border-indigo-300 text-indigo-950 px-2 py-1 rounded text-xs font-bold w-48 relative">
+                                                <div id="n-gn" onclick="nodeClicked('gn', this)" class="node-base cursor-pointer bg-indigo-50 hover:bg-indigo-100 border border-indigo-300 text-indigo-950 px-2 py-1 rounded text-xs font-bold w-48">
                                                     <span class="name-en">2. Gn</span>
                                                 </div>
                                                 <div class="flex flex-col gap-1.5 pl-3 border-l-2 border-indigo-300">
-                                                    <div id="n-fsh" onclick="nodeClicked('fsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold relative">
+                                                    <div id="n-fsh" onclick="nodeClicked('fsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold">
                                                         <span class="name-en">1. FSH</span>
                                                     </div>
-                                                    <div id="n-lh" onclick="nodeClicked('lh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold relative">
+                                                    <div id="n-lh" onclick="nodeClicked('lh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-2 py-1 rounded text-[11px] font-semibold">
                                                         <span class="name-en">2. LH</span>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div id="n-acth" onclick="nodeClicked('acth', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-acth" onclick="nodeClicked('acth', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">3. ACTH</span>
                                             </div>
-                                            <div id="n-tsh" onclick="nodeClicked('tsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-tsh" onclick="nodeClicked('tsh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">4. TSH</span>
                                             </div>
-                                            <div id="n-prolactin" onclick="nodeClicked('prolactin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-prolactin" onclick="nodeClicked('prolactin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">5. Prolactin</span>
                                             </div>
-                                            <div id="n-endorphin" onclick="nodeClicked('endorphin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-endorphin" onclick="nodeClicked('endorphin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">6. Endorphin</span>
                                             </div>
                                         </div>
@@ -271,15 +270,15 @@
 
                                     <!-- 2. Posterior Sub-tree -->
                                     <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
-                                        <div id="n-posterior" onclick="nodeClicked('posterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center relative shadow-sm">
+                                        <div id="n-posterior" onclick="nodeClicked('posterior', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
                                             <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
                                             <span class="name-en">2. posterior</span>
                                         </div>
                                         <div class="flex flex-col gap-2 border-l border-slate-200 pl-4 py-1">
-                                            <div id="n-adh" onclick="nodeClicked('adh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-adh" onclick="nodeClicked('adh', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">1. ADH</span>
                                             </div>
-                                            <div id="n-oxytocin" onclick="nodeClicked('oxytocin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                            <div id="n-oxytocin" onclick="nodeClicked('oxytocin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">2. Oxytocin</span>
                                             </div>
                                         </div>
@@ -290,12 +289,12 @@
 
                             <!-- ROW 2: Pineal -->
                             <div class="flex items-center gap-8">
-                                <div id="n-pineal" onclick="nodeClicked('pineal', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm relative">
+                                <div id="n-pineal" onclick="nodeClicked('pineal', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
                                     <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">2. Gland</div>
                                     <span class="name-en">2. Pineal</span>
                                 </div>
                                 <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
-                                    <div id="n-melatonin" onclick="nodeClicked('melatonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 relative shadow-xs">
+                                    <div id="n-melatonin" onclick="nodeClicked('melatonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                         <span class="name-en">Melatonin</span>
                                     </div>
                                 </div>
@@ -303,4 +302,935 @@
 
                             <!-- ROW 3: Parathyroid -->
                             <div class="flex items-center gap-8">
-                                <div id="n-parathyroid" onclick="nodeClicked('parathyroid', this)" class="nod
+                                <div id="n-parathyroid" onclick="nodeClicked('parathyroid', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">3. Gland</div>
+                                    <span class="name-en">3. Parathyroid</span>
+                                </div>
+                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-pth" onclick="nodeClicked('pth', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">PTH</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 4: Thyroid -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-thyroid" onclick="nodeClicked('thyroid', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">4. Gland</div>
+                                    <span class="name-en">4. Thyroid</span>
+                                </div>
+                                <div class="flex flex-col gap-2 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-calcitonin" onclick="nodeClicked('calcitonin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">1. calcitonin</span>
+                                    </div>
+                                    <div id="n-thyroxin" onclick="nodeClicked('thyroxin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">2. thyroxin</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 5: Thymus -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-thymus" onclick="nodeClicked('thymus', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">5. Gland</div>
+                                    <span class="name-en">5. Thymus</span>
+                                </div>
+                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-thymosin" onclick="nodeClicked('thymosin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">thymosin</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 6: Adrenal -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-adrenal" onclick="nodeClicked('adrenal', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">6. Gland</div>
+                                    <span class="name-en">6. Adrenal</span>
+                                </div>
+                                
+                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <!-- Cortex Sub-branch -->
+                                    <div class="flex items-center gap-6">
+                                        <div id="n-cortex" onclick="nodeClicked('cortex', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
+                                            <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
+                                            <span class="name-en">1. cortex</span>
+                                        </div>
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4">
+                                            <div id="n-glucocorticoid" onclick="nodeClicked('glucocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">1. glucocorticoid (cortisol)</span>
+                                            </div>
+                                            <div id="n-mineralocorticoid" onclick="nodeClicked('mineralocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">2. mineralocorticoid (aldosterone)</span>
+                                            </div>
+                                            <div id="n-androgen" onclick="nodeClicked('androgen', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">3. androgen</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Medulla Sub-branch -->
+                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                        <div id="n-medulla" onclick="nodeClicked('medulla', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
+                                            <div class="text-[8px] text-violet-500 font-bold uppercase">Subdivision</div>
+                                            <span class="name-en">2. medulla</span>
+                                        </div>
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4">
+                                            <div id="n-epinephrine" onclick="nodeClicked('epinephrine', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">1. E ; epinephrine</span>
+                                            </div>
+                                            <div id="n-norepinephrine" onclick="nodeClicked('norepinephrine', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">2. NE ; norepinephrine</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 7: Pancreas -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-pancreas" onclick="nodeClicked('pancreas', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">7. Pancreas</div>
+                                    <div class="name-en">7. Pancreas</div>
+                                    <div class="text-[9px] text-slate-500 font-medium">(Islets of Langerhans)</div>
+                                </div>
+                                <div class="flex flex-col gap-2 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-insulin" onclick="nodeClicked('insulin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">1. Insulin</span>
+                                    </div>
+                                    <div id="n-glucagon" onclick="nodeClicked('glucagon', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">2. Glucagon</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 8: Gonads -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-gonads" onclick="nodeClicked('gonads', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">8. Gonads</div>
+                                    <span class="name-en">8. Gonads</span>
+                                </div>
+                                
+                                <div class="flex flex-col gap-4 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <!-- Testis -->
+                                    <div class="flex items-center gap-6">
+                                        <div id="n-testis" onclick="nodeClicked('testis', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
+                                            <span class="name-en">1. Testis</span>
+                                        </div>
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4">
+                                            <div id="n-testosterone" onclick="nodeClicked('testosterone', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">Testosterons</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ovary -->
+                                    <div class="flex items-center gap-6 border-t border-dashed border-rose-100 pt-3">
+                                        <div id="n-ovary" onclick="nodeClicked('ovary', this)" class="node-base cursor-pointer bg-violet-50 hover:bg-violet-100 border border-violet-300 text-slate-800 px-3 py-2 rounded-lg text-xs font-semibold w-40 text-center shadow-sm">
+                                            <span class="name-en">2. Ovary</span>
+                                        </div>
+                                        <div class="flex flex-col gap-2 border-l border-slate-200 pl-4">
+                                            <div id="n-estrogen" onclick="nodeClicked('estrogen', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">1. Estrogen</span>
+                                            </div>
+                                            <div id="n-progesterone" onclick="nodeClicked('progesterone', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                <span class="name-en">2. Progesterone</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ROW 9: Placenta -->
+                            <div class="flex items-center gap-8">
+                                <div id="n-placenta" onclick="nodeClicked('placenta', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">9. Placenta</div>
+                                    <span class="name-en">9. Placenta</span>
+                                </div>
+                                <div class="flex items-center gap-6 border-l-2 border-dashed border-rose-200 pl-6">
+                                    <div id="n-hcg" onclick="nodeClicked('hcg', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                        <span class="name-en">hCG</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Floating Popover (Appended inside paper to avoid transform/scale coordinate shifts) -->
+    <div id="global-popover" class="absolute hidden z-50 w-72 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 popover-animate">
+        <div id="popover-content">
+            <!-- Study Popover Markup -->
+            <div id="pop-study-view" class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span id="pop-study-tag" class="text-[9px] font-black tracking-widest text-rose-500 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100 uppercase">Gland</span>
+                    <button onclick="closePopover()" class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div>
+                    <h3 id="pop-study-en" class="font-bold text-slate-900 text-base leading-tight">Pituitary</h3>
+                    <p id="pop-study-th" class="text-xs text-rose-600 font-bold mt-0.5">ต่อมใต้สมอง</p>
+                </div>
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-150">
+                    <p id="pop-study-desc" class="text-[11.5px] text-slate-600 leading-relaxed">รายละเอียดความรู้</p>
+                </div>
+            </div>
+
+            <!-- Quiz Choices Popover Markup -->
+            <div id="pop-quiz-view" class="space-y-3 hidden">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold text-rose-600 flex items-center gap-1 bg-rose-50 px-2 py-0.5 rounded-md">
+                        <i data-lucide="help-circle" class="w-3 h-3 text-rose-500"></i>
+                        <span>เลือกคำตอบที่ถูกต้อง</span>
+                    </span>
+                    <button onclick="closePopover()" class="text-slate-400 hover:text-slate-600 transition-colors">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div class="bg-slate-50 p-2 rounded-xl border border-slate-100">
+                    <p id="pop-quiz-hint" class="text-[10.5px] text-indigo-700 italic leading-relaxed">คำใบ้หลัก...</p>
+                </div>
+                <div class="space-y-1.5" id="pop-quiz-choices-box"></div>
+            </div>
+        </div>
+        <!-- Arrow element -->
+        <div class="arrow absolute w-3 h-3 bg-white border-b border-r border-slate-200 transform rotate-45 left-1/2 -translate-x-1/2 -bottom-1.5"></div>
+    </div>
+
+    <!-- Extra Styles for Quiz State masking -->
+    <style>
+        .quiz-hidden-node {
+            background-color: #e2e8f0 !important;
+            border: 2px dashed #94a3b8 !important;
+            color: transparent !important;
+            box-shadow: none !important;
+        }
+        .quiz-hidden-node * {
+            visibility: hidden !important;
+        }
+        .quiz-hidden-node::before {
+            content: '?';
+            visibility: visible !important;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            color: #475569;
+            font-family: 'Fredoka', sans-serif;
+        }
+    </style>
+
+    <script>
+        const nodesData = {
+            'pituitary': {
+                name: '1. Pituitary',
+                thaiName: 'ต่อมใต้สมอง (Hypothalamus)',
+                type: 'gland',
+                desc: 'ตั้งอยู่ใต้สมองส่วนหน้า ทำหน้าที่ผลิตและหลั่งฮอร์โมนหลักที่เข้าไปกระตุ้นอวัยวะเป้าหมายและต่อมอื่นๆ',
+                hint: 'ต่อมไร้ท่อระดับผู้ควบคุมหลัก ทำงานสอดคล้องประสานกับไฮโปทาลามัส'
+            },
+            'anterior': {
+                name: '1. anterior',
+                thaiName: 'ต่อมใต้สมองส่วนหน้า',
+                type: 'subdivision',
+                desc: 'สังเคราะห์และหลั่งฮอร์โมนกลุ่มใหญ่ เช่น GH, TSH, ACTH, Prolactin, Endorphin และ Gn (FSH/LH)',
+                hint: 'ส่วนหน้าของต่อมใต้สมอง ผลิตฮอร์โมนส่วนใหญ่ในแผนผังนี้'
+            },
+            'gh': {
+                name: '1. GH',
+                thaiName: 'Growth Hormone',
+                type: 'hormone',
+                desc: 'กระตุ้นกระบวนการสะสมโปรตีนและการยืดขยายตัวของกระดูกและกล้ามเนื้อทั่วร่างกาย',
+                hint: 'ฮอร์โมนที่มีบทบาทสำคัญในการควบคุมความสูงและการเติบโตทางร่างกาย'
+            },
+            'gn': {
+                name: '2. Gn',
+                thaiName: 'Gonadotropin',
+                type: 'hormone',
+                desc: 'กลุ่มฮอร์โมนกระตุ้นต่อมสืบพันธุ์ นำไปสู่การสร้างเซลล์สืบพันธุ์และฮอร์โมนเพศหลัก',
+                hint: 'สารฮอร์โมนกระตุ้นต่อมเพศเบื้องต้น แยกออกมาเป็น FSH และ LH'
+            },
+            'fsh': {
+                name: '1. FSH',
+                thaiName: 'Follicle Stimulating Hormone',
+                type: 'hormone',
+                desc: 'ในเพศหญิงช่วยให้ฟอลลิเคิลในรังไข่เติบโต ในเพศชายกระตุ้นท่อสร้างอสุจิให้ผลิตสเปิร์ม',
+                hint: 'ฮอร์โมนเร่งการสุกของเซลล์ไข่และการเจริญพันธุ์ทั่วไป'
+            },
+            'lh': {
+                name: '2. LH',
+                thaiName: 'Luteinizing Hormone',
+                type: 'hormone',
+                desc: 'ในหญิงกระตุ้นให้เกิดกระบวนการตกไข่ ในชายกระตุ้นเนื้อเยื่ออินเตอร์สติเชียลให้สร้างฮอร์โมนชาย',
+                hint: 'สารเร่งการตกไข่ และช่วยกระตุ้นการผลิตเทสโทสเตอโรนในอัณฑะ'
+            },
+            'acth': {
+                name: '3. ACTH',
+                thaiName: 'Adrenocorticotropic Hormone',
+                type: 'hormone',
+                desc: 'กระตุ้นต่อมหมวกไตชั้นนอก (Adrenal Cortex) ให้สร้างสเตียรอยด์คอร์ติซอลออกมาสู้ภัยความเครียด',
+                hint: 'กระตุ้นการทำงานของต่อมหมวกไตเปลือกนอกโดยตรง'
+            },
+            'tsh': {
+                name: '4. TSH',
+                thaiName: 'Thyroid Stimulating Hormone',
+                type: 'hormone',
+                desc: 'คอยส่งสัญญาณกระตุ้นต่อมไทรอยด์ให้ผลิตและหลั่งฮอร์โมนไทรอกซินสำหรับขับเคลื่อนระดับพลังงาน',
+                hint: 'กระตุ้นกระบวนการเผาผลาญอาหารโดยส่งสัญญาณผ่านต่อมไทรอยด์'
+            },
+            'prolactin': {
+                name: '5. Prolactin',
+                thaiName: 'โปรแลคติน',
+                type: 'hormone',
+                desc: 'ทำหน้าที่กระตุ้นต่อมน้ำนมในผู้หญิงมีครรภ์ให้มีการผลิตและหลั่งน้ำนมป้อนเด็กทารกหลังคลอด',
+                hint: 'กระตุ้นเต้านมและน้ำนมของมารดาหลังจากการให้กำเนิดบุตร'
+            },
+            'endorphin': {
+                name: '6. Endorphin',
+                thaiName: 'เอ็นดอร์ฟิน (สารความสุข)',
+                type: 'hormone',
+                desc: 'ทำหน้าที่ลดความเจ็บปวดและสร้างอารมณ์ผ่อนคลายเบิกบานตามธรรมชาติ หลั่งช่วงออกกำลังกายหนัก',
+                hint: 'ฮอร์โมนแห่งความสุขและสารเคมีบรรเทาปวดที่ร่างกายสร้างขึ้นเอง'
+            },
+            'posterior': {
+                name: '2. posterior',
+                thaiName: 'ต่อมใต้สมองส่วนหลัง',
+                type: 'subdivision',
+                desc: 'เป็นส่วนที่ไม่ได้สร้างฮอร์โมนขึ้นเอง แต่มีหน้าที่กักเก็บและหลั่ง ADH และ Oxytocin ที่รับมาจากสมอง',
+                hint: 'คลังเก็บฮอร์โมนหลักของระบบสมองไฮโปทาลามัส'
+            },
+            'adh': {
+                name: '1. ADH',
+                thaiName: 'Antidiuretic Hormone',
+                type: 'hormone',
+                desc: 'กระตุ้นให้ท่อหน่วยไตดูดกลับน้ำเข้ากระแสเลือดเพื่อลดการสูญเสียน้ำปัสสาวะ และพยุงความดัน',
+                hint: 'ช่วยรักษาน้ำเมื่อร่างกายเสี่ยงขาดน้ำและสูญเสียน้ำปัสสาวะมากเกินไป'
+            },
+            'oxytocin': {
+                name: '2. Oxytocin',
+                thaiName: 'ออกซิโทซิน',
+                type: 'hormone',
+                desc: 'กระตุ้นให้มดลูกเกิดการบีบรัดตัวขณะคลอดบุตร และกระตุ้นต่อมน้ำนมให้พร้อมพุ่งหลั่ง',
+                hint: 'ฮอร์โมนกระตุ้นการคลอดและสารชี้นำความสัมพันธ์ผูกพันภายในครอบครัว'
+            },
+            'pineal': {
+                name: '2. Pineal',
+                thaiName: 'ต่อมไพเนียล',
+                type: 'gland',
+                desc: 'ต่อมขนาดเล็กใจกลางสมอง ทำหน้าที่แปลระดับกระแสแสงเพื่อช่วยผลิตเมลาโทนินคุมจังหวะชีวิต',
+                hint: 'ต่อมผลิตสารควบคุมเวลานอนหลับตื่นตามรอบแสงสว่างและความมืด'
+            },
+            'melatonin': {
+                name: 'Melatonin',
+                thaiName: 'เมลาโทนิน',
+                type: 'hormone',
+                desc: 'ควบคุมวงจรหลับและตื่น (Circadian Rhythm) ของมนุษย์ ช่วยให้รู้สึกง่วงเมื่อเข้าสู่ยามค่ำคืน',
+                hint: 'ฮอร์โมนที่หลั่งเด่นชัดมากที่สุดในความมืดสงัดเพื่อนำการนอนหลับ'
+            },
+            'parathyroid': {
+                name: '3. Parathyroid',
+                thaiName: 'ต่อมพาราไทรอยด์',
+                type: 'gland',
+                desc: 'ต่อมขนาดเล็กสี่จุดบนหลังไทรอยด์ ควบคุมระดับความเข้มข้นของไอออนแคลเซียมและฟอสเฟต',
+                hint: 'ต่อมคุมสมดุลไอออนแคลเซียมเพื่อการบีบตัวปกติของหัวใจและกล้ามเนื้อ'
+            },
+            'pth': {
+                name: 'PTH',
+                thaiName: 'Parathyroid Hormone',
+                type: 'hormone',
+                desc: 'ทำหน้าที่ยกระดับแคลเซียมในเลือดขึ้นโดยเร่งสลายแคลเซียมจากคลังเก็บกระดูกและลดสูญเสียทางปัสสาวะ',
+                hint: 'ฮอร์โมนหลักที่ช่วยสลายกระดูกออกมาเป็นแคลเซียมป้อนกระแสเลือด'
+            },
+            'thyroid': {
+                name: '4. Thyroid',
+                thaiName: 'ต่อมไทรอยด์',
+                type: 'gland',
+                desc: 'ต่อมรูปปีกผีเสื้อที่ลำคอ ควบคุมกระบวนการใช้ออกซิเจนและอัตราการเผาผลาญสารอาหารรวมถึงแคลเซียม',
+                hint: 'ต่อมที่คอยควบคุมเมแทบอลิซึมทั่วไป หลั่งไทรอกซินและแคลซิโทนิน'
+            },
+            'calcitonin': {
+                name: '1. calcitonin',
+                thaiName: 'แคลซิโทนิน',
+                type: 'hormone',
+                desc: 'คอยดักจับแคลเซียมส่วนเกินในเลือดส่งกลับไปฝากเก็บสะสมเสริมสร้างความหนาแน่นให้กระดูก',
+                hint: 'ฮอร์โมนลดระดับระดับแคลเซียมในกระแสเลือด ทำงานต้านกับ PTH'
+            },
+            'thyroxin': {
+                name: '2. thyroxin',
+                thaiName: 'ไทรอกซิน',
+                type: 'hormone',
+                desc: 'ควบคุมเมแทบอลิซึมของพลังงานและมีความจำเป็นต่อโครงสร้างสมอง สติปัญญา และการเจริญของวัยเด็ก',
+                hint: 'โรคคอพอกหรืออาการเอ๋อ (Cretinism) มีความสัมพันธ์กับการบกพร่องสารนี้'
+            },
+            'thymus': {
+                name: '5. Thymus',
+                thaiName: 'ต่อมไทมัส',
+                type: 'gland',
+                desc: 'ต่อมภูมิคุ้มกันตั้งอยู่ทรวงอกเหนือขั้วหัวใจ คอยกระตุ้นเม็ดเลือดขาวทีเซลล์ช่วงวัยหนุ่มสาว',
+                hint: 'ต่อมสำคัญสำหรับฝึกสอนและอบรมเซลล์เม็ดเลือดขาวสู้ภัยไวรัสโรคติดต่อ'
+            },
+            'thymosin': {
+                name: 'thymosin',
+                thaiName: 'ไทโมซิน',
+                type: 'hormone',
+                desc: 'กระตุ้นเซลล์ต้นกำเนิดเม็ดเลือดขาวในต่อมไทมัสให้เปลี่ยนเป็น T-cell ที่พร้อมทำหน้าที่ป้องกันร่างกาย',
+                hint: 'สารฮอร์โมนขับเคลื่อนกระบวนการสร้างและปรับเม็ดเลือดขาวทีเซลล์สู้ภัยสิ่งแปลกปลอม'
+            },
+            'adrenal': {
+                name: '6. Adrenal',
+                thaiName: 'ต่อมหมวกไต',
+                type: 'gland',
+                desc: 'ต่อมรูปหมวกสวมอยู่เหนือขั้วไต ประกอบด้วยเปลือกหมวกนอกและแกนใน ทำหน้าที่ผลักดันการตอบสนองขั้นสูง',
+                hint: 'ต่อมที่ควบคุมการผลิตสเตียรอยด์ต้านเครียดและสารอะดรีนาลีนเร่งอัตราเต้นชีพจร'
+            },
+            'cortex': {
+                name: '1. cortex',
+                thaiName: 'ต่อมหมวกไตส่วนนอก',
+                type: 'subdivision',
+                desc: 'ส่วนนอกสีส้มเหลือง หลั่งกลุ่มสเตียรอยด์ เช่น คอร์ติซอล แอลโดสเตอโรน และฮอร์โมนเพศขั้นต้น',
+                hint: 'ส่วนนอกต่อมหมวกไต ผลิตฮอร์โมนรักษาสมดุลความเค็มและความตึงเครียดระยะยาว'
+            },
+            'glucocorticoid': {
+                name: '1. glucocorticoid (cortisol)',
+                thaiName: 'กลูโคคอร์ติคอยด์ / คอร์ติซอล',
+                type: 'hormone',
+                desc: 'เพิ่มกลูโคสในกระแสเลือดเพื่อนำพลังงานไปช่วยสู้ภาวะเหนื่อยล้าหรือวิกฤต พร้อมควบคุมระงับปฏิกิริยาอักเสบ',
+                hint: 'ฮอร์โมนความเครียดหลักของสมอง คอยพยุงพลังงานเมื่อร่างกายสะสมแรงกดดันอักเสบ'
+            },
+            'mineralocorticoid': {
+                name: '2. mineralocorticoid (aldosterone)',
+                thaiName: 'มิเนอราโลคอร์ติคอยด์ / แอลโดสเตอโรน',
+                type: 'hormone',
+                desc: 'กระตุ้นให้ไตดึงเกลือโซเดียมคืนและปล่อยสารโพแทสเซียมทิ้งปัสสาวะเพื่อรักษาปริมาตรเลือดและความดัน',
+                hint: 'ฮอร์โมนควบคุมปริมาณความเค็มโซเดียมในเลือดและความดันโลหิต'
+            },
+            'androgen': {
+                name: '3. androgen',
+                thaiName: 'แอนโดรเจน',
+                type: 'hormone',
+                desc: 'สารสเตียรอยด์ต้นกำเนิดฮอร์โมนเพศที่มีบทบาทกระตุ้นลักษณะเพศชายเบื้องต้นก่อนเข้าวัยตกไข่หรือสเปิร์มจริง',
+                hint: 'ฮอร์โมนเพศกระตุ้นเริ่มต้น หลั่งปริมาณน้อยมากที่ต่อมหมวกไตชั้นนอก'
+            },
+            'medulla': {
+                name: '2. medulla',
+                thaiName: 'ต่อมหมวกไตส่วนใน',
+                type: 'subdivision',
+                desc: 'แกนเนื้อเยื่อภายใน ทำงานประสานรับคำสั่งตรงจากระบบประสาทเพื่อสู้ตื่นเต้นตระหนกตกใจฉับพลัน',
+                hint: 'ส่วนในผลิตอะดรีนาลีนพยุงการสู้ภัยพิบัติด่วนทันทีทันควัน'
+            },
+            'epinephrine': {
+                name: '1. E ; epinephrine',
+                thaiName: 'เอพิเนฟริน (อะดรีนาลีน)',
+                type: 'hormone',
+                desc: 'กระตุ้นให้หัวใจสูบฉีดเลือดรวดเร็ว ขยายหลอดลมปอด และเร่งตับสลายไกลโคเจนมาเผาผลาญเร่งด่วน',
+                hint: 'สารความตกใจกลัวขีดสุด ทำให้มีพละกำลังยกของหนักเกินกำลังมนุษย์หนีภัยพิบัติ'
+            },
+            'norepinephrine': {
+                name: '2. NE ; norepinephrine',
+                thaiName: 'นอร์เอพิเนฟริน',
+                type: 'hormone',
+                desc: 'ทำหน้าที่เป็นสารสื่อประสาทและฮอร์โมน บีบเส้นเลือดส่วนปลายเพื่อช่วยยกระดับพยุงรักษาแรงดันความดัน',
+                hint: 'ทำงานประสานสอดคล้องกับอะดรีนาลีน แต่โดดเด่นในด้านการคุมบีบรัดความดันหลอดเลือด'
+            },
+            'pancreas': {
+                name: '7. Pancreas',
+                thaiName: 'ตับอ่อน (Islets of Langerhans)',
+                type: 'gland',
+                desc: 'อวัยวะควบคุมระดับความเข้มข้นกลูโคส ประกอบด้วยหมู่เซลล์ Islets of Langerhans หลั่งอินซูลินและกลูคากอน',
+                hint: 'ตั้งอยู่หลังกระเพาะอาหาร มีเนื้อเยื่อผลิตคู่ฮอร์โมนสู้รบระดับน้ำตาลกลูโคส'
+            },
+            'insulin': {
+                name: '1. Insulin',
+                thaiName: 'อินซูลิน',
+                type: 'hormone',
+                desc: 'หลั่งจาก Beta cells ช่วยกวาดล้างกลูโคสส่วนเกินส่งป้อนเซลล์และตับเก็บเป็นแป้ง เพื่อลดระดับน้ำตาลในเลือด',
+                hint: 'หากร่างกายบกพร่องสารนี้จะส่งผลให้น้ำตาลท่วมกระแสเลือดกลายเป็นโรคเบาหวาน'
+            },
+            'glucagon': {
+                name: '2. Glucagon',
+                thaiName: 'กลูคากอน',
+                type: 'hormone',
+                desc: 'หลั่งจาก Alpha cells กระตุ้นตับสลายไกลโคเจนป้อนเป็นกลูโคสในกระแสเลือดเพื่อเพิ่มระดับน้ำตาล',
+                hint: 'ทำงานตรงข้ามอินซูลิน ป้องกันไม่ให้น้ำตาลในเลือดวูบตกช่วงอดอาหารกระทันหัน'
+            },
+            'gonads': {
+                name: '8. Gonads',
+                thaiName: 'ต่อมเพศ',
+                type: 'gland',
+                desc: 'ต่อมไร้ท่อที่หลั่งฮอร์โมนแสดงสรีระโค้งเว้าเพศหญิงหรือกำลังเพศชาย ร่วมผลิตเซลล์อสุจิและรังไข่',
+                hint: 'แบ่งเป็นระบบรังไข่ในเพศหญิง และระบบอัณฑะในเพศชาย'
+            },
+            'testis': {
+                name: '1. Testis',
+                thaiName: 'อัณฑะ (ต่อมเพศชาย)',
+                type: 'subdivision',
+                desc: 'ต่อมสืบพันธุ์ชาย คอยสร้างสเปิร์มและฮอร์โมนเทสโทสเตอโรนกระตุ้นการมีหนวดเคราและมวลกล้ามเนื้อ',
+                hint: 'ต่อมเพศสำหรับกระตุ้นพฤติกรรมและความกำยำแบบบุรุษ'
+            },
+            'testosteron': {
+                name: 'Testosterons',
+                thaiName: 'เทสโทสเตอโรน',
+                type: 'hormone',
+                desc: 'ควบคุมพัฒนาการเพศชาย เช่น เสียงทุ้มห้าว มวลกล้ามเนื้อกระดูก ความแข็งแกร่ง และเร่งกระตุ้นอสุจิ',
+                hint: 'ฮอร์โมนแสดงความเข้มแข็งและเอกลักษณ์ทางกายภาพของเพศชาย'
+            },
+            'ovary': {
+                name: '2. Ovary',
+                thaiName: 'รังไข่ (ต่อมเพศหญิง)',
+                type: 'subdivision',
+                desc: 'ต่อมสืบพันธุ์สตรี ตกไข่รอบวงเดือนพร้อมสร้างกลุ่มฮอร์โมนความสาว เอสโตรเจน และ โปรเจสเตอโรน',
+                hint: 'ต่อมสำคัญของผู้หญิงในการคุมรอบเดือนและการเจริญพันธุ์ทั่วไป'
+            },
+            'estrogen': {
+                name: '1. Estrogen',
+                thaiName: 'เอสโตรเจน',
+                type: 'hormone',
+                desc: 'กระตุ้นสรีระความเป็นหญิง สะโพกผาย คุมการงอกเยื่อบุมดลูกชั้นแรก และแสดงความเป็นสาวพราวเสน่ห์',
+                hint: 'ฮอร์โมนสาวหลักที่ช่วยดูแลความเปล่งปลั่งและผิวพรรณแบบกุลสตรี'
+            },
+            'progesterone': {
+                name: '2. Progesterone',
+                thaiName: 'โปรเจสเตอโรน',
+                type: 'hormone',
+                desc: 'เตรียมพร้อมและพยุงชั้นเยื่อบุมดลูกให้หนาฟูเพื่อรอรับการฝังไข่ พร้อมยับยั้งอาการบีบรัดตัวมดลูกช่วงอุ้มครรภ์',
+                hint: 'ฮอร์โมนดูแลรักษาความปลอดภัยเพื่อการฝังตัวของครรภ์ระยะเริ่มต้นไม่ให้แท้งลูกง่าย'
+            },
+            'placenta': {
+                name: '9. Placenta',
+                thaiName: 'รก',
+                type: 'gland',
+                desc: 'เนื้อเยื่อแลกเปลี่ยนสารอาหารชั่วคราวระหว่างแม่และเด็กช่วงตั้งครรภ์ ทำหน้าที่ผลิตฮอร์โมนพยุงอุ้มชูครรภ์',
+                hint: 'ต่อมเฉพาะกิจที่จะพบได้เฉพาะในสรีระมารดาเมื่อดั่งมีบุตรในครรภ์เท่านั้น'
+            },
+            'hcg': {
+                name: 'hCG',
+                thaiName: 'Human Chorionic Gonadotropin',
+                type: 'hormone',
+                desc: 'หลั่งออกโดยเนื้อรก คอยกระตุ้นให้รังไข่สร้างโปรเจสเตอโรนพยุงอายุครรภ์ และใช้เป็นตัวบ่งบอกตรวจตั้งครรภ์',
+                hint: 'ฮอร์โมนเด่นชัดที่เครื่องตรวจสอบปัสสาวะจะแจ้งสัญลักษณ์สองขีดเพื่อยืนยันการตั้งครรภ์'
+            }
+        };
+
+        let currentMode = 'study';
+        let quizStatus = {};
+        let currentZoom = 1.0;
+        let streak = 0;
+        let correctAnswersCount = 0;
+        let activeQuizNodeId = null;
+
+        const playSound = (type) => {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'correct') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.4);
+                } else if (type === 'incorrect') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.25);
+                    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                } else if (type === 'victory') {
+                    const notes = [523.25, 659.25, 783.99, 1046.5];
+                    notes.forEach((freq, idx) => {
+                        const oscN = ctx.createOscillator();
+                        const gainN = ctx.createGain();
+                        oscN.connect(gainN);
+                        gainN.connect(ctx.destination);
+                        oscN.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+                        gainN.gain.setValueAtTime(0.08, ctx.currentTime + idx * 0.08);
+                        gainN.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + idx * 0.08 + 0.3);
+                        oscN.start(ctx.currentTime + idx * 0.08);
+                        oscN.stop(ctx.currentTime + idx * 0.08 + 0.3);
+                    });
+                }
+            } catch (e) {
+                console.log("Audio contextual audio blocked.");
+            }
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                drawNotebookBranches();
+            }, 600);
+
+            window.addEventListener('resize', drawNotebookBranches);
+            document.getElementById('scroller').addEventListener('scroll', drawNotebookBranches);
+        });
+
+        function switchMode(mode) {
+            currentMode = mode;
+            closePopover();
+
+            const btnStudy = document.getElementById('btn-mode-study');
+            const btnQuiz = document.getElementById('btn-mode-quiz');
+            const banner = document.getElementById('instruction-banner');
+
+            if (mode === 'study') {
+                btnStudy.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 bg-white text-slate-800 shadow-sm border border-slate-200";
+                btnQuiz.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 text-slate-600 hover:text-slate-900";
+                banner.textContent = "โหมดเรียนรู้: แตะกล่องข้อความใดๆ บนแผนผัง เพื่อเปิดดูหน้าที่และความรู้ทันที!";
+                
+                Object.keys(nodesData).forEach(id => {
+                    const el = document.getElementById(`n-${id}`);
+                    if (el) {
+                        el.classList.remove('quiz-hidden-node', 'glow-active', 'solved-active', 'shake-active');
+                    }
+                });
+            } else {
+                btnQuiz.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 bg-white text-slate-800 shadow-sm border border-slate-200";
+                btnStudy.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 text-slate-600 hover:text-slate-900";
+                banner.textContent = "โหมดควิซ: เลือกจิ้มกล่องเครื่องหมายคำถาม (?) บนแผนผัง และเลือกคำตอบที่ถูกต้องตรงป๊อปอัปได้เลย!";
+                
+                initQuizStates();
+            }
+            setTimeout(drawNotebookBranches, 150);
+        }
+
+        function initQuizStates() {
+            quizStatus = {};
+            correctAnswersCount = 0;
+            streak = 0;
+            updateStatsUI();
+
+            Object.keys(nodesData).forEach(id => {
+                quizStatus[id] = false;
+                const el = document.getElementById(`n-${id}`);
+                if (el) {
+                    el.classList.add('quiz-hidden-node');
+                    el.classList.remove('glow-active', 'solved-active', 'shake-active');
+                }
+            });
+        }
+
+        function drawNotebookBranches() {
+            const svg = document.getElementById('svg-connections');
+            if (!svg) return;
+            svg.innerHTML = '';
+
+            const board = document.getElementById('flowchart-board');
+            const bRect = board.getBoundingClientRect();
+
+            const parentMappings = [
+                { parent: 'root', childs: ['pituitary', 'pineal', 'parathyroid', 'thyroid', 'thymus', 'adrenal', 'pancreas', 'gonads', 'placenta'] },
+                { parent: 'pituitary', childs: ['anterior', 'posterior'] },
+                { parent: 'anterior', childs: ['gh', 'gn', 'acth', 'tsh', 'prolactin', 'endorphin'] },
+                { parent: 'posterior', childs: ['adh', 'oxytocin'] },
+                { parent: 'pineal', childs: ['melatonin'] },
+                { parent: 'parathyroid', childs: ['pth'] },
+                { parent: 'thyroid', childs: ['calcitonin', 'thyroxin'] },
+                { parent: 'thymus', childs: ['thymosin'] },
+                { parent: 'adrenal', childs: ['cortex', 'medulla'] },
+                { parent: 'cortex', childs: ['glucocorticoid', 'mineralocorticoid', 'androgen'] },
+                { parent: 'medulla', childs: ['epinephrine', 'norepinephrine'] },
+                { parent: 'pancreas', childs: ['insulin', 'glucagon'] },
+                { parent: 'gonads', childs: ['testis', 'ovary'] },
+                { parent: 'testis', childs: ['testosteron'] },
+                { parent: 'ovary', childs: ['estrogen', 'progesterone'] }
+            ];
+
+            parentMappings.forEach(group => {
+                let pEl = document.getElementById(`n-${group.parent}`);
+                if (group.parent === 'root') pEl = document.getElementById('node-root');
+
+                if (!pEl) return;
+                const pRect = pEl.getBoundingClientRect();
+
+                group.childs.forEach(child => {
+                    let realChildId = child;
+                    if (child === 'testosteron') realChildId = 'testosterone';
+
+                    const cEl = document.getElementById(`n-${realChildId}`);
+                    if (!cEl) return;
+
+                    const cRect = cEl.getBoundingClientRect();
+
+                    const x1 = pRect.right - bRect.left;
+                    const y1 = pRect.top + (pRect.height / 2) - bRect.top;
+
+                    const x2 = cRect.left - bRect.left;
+                    const y2 = cRect.top + (cRect.height / 2) - bRect.top;
+
+                    const midX = x1 + (x2 - x1) * 0.45;
+
+                    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    const pathData = `M ${x1} ${y1} L ${midX} ${y1} L ${midX} ${y2} L ${x2} ${y2}`;
+                    path.setAttribute('d', pathData);
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#f43f5e');
+                    path.setAttribute('stroke-width', '2');
+                    path.setAttribute('stroke-linecap', 'round');
+                    path.setAttribute('stroke-linejoin', 'round');
+
+                    if (currentMode === 'quiz') {
+                        const pId = group.parent;
+                        const cId = realChildId;
+                        const isPSolved = (pId === 'root' || quizStatus[pId]);
+                        const isCSolved = quizStatus[cId];
+
+                        if (isPSolved && isCSolved) {
+                            path.setAttribute('stroke', '#10b981');
+                            path.setAttribute('stroke-width', '2.5');
+                        } else {
+                            path.setAttribute('stroke', '#cbd5e1');
+                        }
+                    }
+
+                    svg.appendChild(path);
+                });
+            });
+        }
+
+        function nodeClicked(nodeId, element) {
+            const data = nodesData[nodeId];
+            if (!data) return;
+
+            document.querySelectorAll('.node-base').forEach(el => el.classList.remove('glow-active'));
+            element.classList.add('glow-active');
+
+            activeQuizNodeId = nodeId;
+            positionPopoverOnNode(element);
+
+            if (currentMode === 'study') {
+                document.getElementById('pop-study-view').classList.remove('hidden');
+                document.getElementById('pop-quiz-view').classList.add('hidden');
+
+                document.getElementById('pop-study-tag').textContent = data.type;
+                document.getElementById('pop-study-en').textContent = data.name;
+                document.getElementById('pop-study-th').textContent = data.thaiName;
+                document.getElementById('pop-study-desc').textContent = data.desc;
+            } else {
+                if (quizStatus[nodeId]) {
+                    document.getElementById('pop-study-view').classList.remove('hidden');
+                    document.getElementById('pop-quiz-view').classList.add('hidden');
+                    document.getElementById('pop-study-tag').textContent = "SOLVED ✔";
+                    document.getElementById('pop-study-en').textContent = data.name;
+                    document.getElementById('pop-study-th').textContent = data.thaiName;
+                    document.getElementById('pop-study-desc').textContent = `คุณตอบถูกต้องแล้ว: ${data.desc}`;
+                    return;
+                }
+
+                document.getElementById('pop-study-view').classList.add('hidden');
+                document.getElementById('pop-quiz-view').classList.remove('hidden');
+
+                document.getElementById('pop-quiz-hint').textContent = `คำใบ้: ${data.hint}`;
+                generatePopoverChoices(nodeId);
+            }
+        }
+
+        function positionPopoverOnNode(nodeElement) {
+            const popover = document.getElementById('global-popover');
+            const board = document.getElementById('flowchart-board');
+            
+            if (popover.parentElement !== board) {
+                board.appendChild(popover);
+            }
+            popover.classList.remove('hidden');
+
+            const nLeft = nodeElement.offsetLeft;
+            const nTop = nodeElement.offsetTop;
+            const nWidth = nodeElement.offsetWidth;
+            const nHeight = nodeElement.offsetHeight;
+
+            let left = nLeft + (nWidth / 2) - 144;
+            let top = nTop - 290;
+
+            if (left < 10) left = 10;
+            if (left + 288 > board.offsetWidth) {
+                left = board.offsetWidth - 298;
+            }
+
+            if (nTop < 250) {
+                top = nTop + nHeight + 12;
+                popover.querySelector('.arrow').className = "arrow absolute w-3 h-3 bg-white border-t border-l border-slate-200 transform rotate-45 left-1/2 -translate-x-1/2 -top-1.5";
+            } else {
+                popover.querySelector('.arrow').className = "arrow absolute w-3 h-3 bg-white border-b border-r border-slate-200 transform rotate-45 left-1/2 -translate-x-1/2 -bottom-1.5";
+            }
+
+            popover.style.left = `${left}px`;
+            popover.style.top = `${top}px`;
+        }
+
+        function closePopover() {
+            document.getElementById('global-popover').classList.add('hidden');
+            document.querySelectorAll('.node-base').forEach(el => el.classList.remove('glow-active'));
+        }
+
+        function generatePopoverChoices(nodeId) {
+            const correctData = nodesData[nodeId];
+            const correctName = correctData.name;
+
+            let pool = Object.values(nodesData).filter(n => n.type === correctData.type && n.name !== correctName);
+            
+            if (pool.length < 3) {
+                pool = Object.values(nodesData).filter(n => n.name !== correctName);
+            }
+
+            pool.sort(() => 0.5 - Math.random());
+            const options = pool.slice(0, 3).map(o => o.name);
+
+            const finalChoices = [correctName, ...options].sort(() => 0.5 - Math.random());
+
+            const container = document.getElementById('pop-quiz-choices-box');
+            container.innerHTML = '';
+
+            finalChoices.forEach((choice, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-2.5 rounded-xl border border-slate-200 hover:border-rose-400 hover:bg-rose-50 text-slate-800 text-[11px] font-semibold transition-all duration-150 flex items-center justify-between group";
+                
+                const refObj = Object.values(nodesData).find(n => n.name === choice);
+                const thLabel = refObj ? ` (${refObj.thaiName})` : '';
+
+                btn.innerHTML = `
+                    <span class="flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-lg bg-slate-100 group-hover:bg-rose-500 group-hover:text-white flex items-center justify-center text-[10px] font-bold">${idx + 1}</span>
+                        <span class="truncate max-w-[210px]">${choice}${thLabel}</span>
+                    </span>
+                `;
+
+                btn.onclick = () => submitAnswer(choice, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function submitAnswer(chosenName, buttonElement) {
+            const correctData = nodesData[activeQuizNodeId];
+            const targetEl = document.getElementById(`n-${activeQuizNodeId}`);
+
+            if (chosenName === correctData.name) {
+                playSound('correct');
+                streak++;
+                correctAnswersCount++;
+                quizStatus[activeQuizNodeId] = true;
+
+                if (targetEl) {
+                    targetEl.classList.remove('quiz-hidden-node', 'glow-active');
+                    targetEl.classList.add('solved-active');
+                }
+
+                triggerTargetedConfetti(targetEl);
+
+                buttonElement.className = "w-full text-left p-2.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 text-[11px] font-bold flex items-center justify-between";
+                buttonElement.innerHTML = `<span>✔ ถูกต้องเก่งมาก!</span>`;
+
+                updateStatsUI();
+
+                if (correctAnswersCount === Object.keys(nodesData).length) {
+                    setTimeout(() => {
+                        handleVictoryCelebration();
+                    }, 1000);
+                    return;
+                }
+
+                setTimeout(() => {
+                    closePopover();
+                    drawNotebookBranches();
+                }, 800);
+
+            } else {
+                playSound('incorrect');
+                streak = 0;
+                updateStatsUI();
+
+                if (targetEl) {
+                    targetEl.classList.add('shake-active');
+                    setTimeout(() => targetEl.classList.remove('shake-active'), 400);
+                }
+
+                buttonElement.className = "w-full text-left p-2.5 rounded-xl border-2 border-red-500 bg-red-50 text-red-900 text-[11px] font-bold flex items-center justify-between";
+                buttonElement.innerHTML = `<span>❌ ลองตอบข้ออื่นดูนะ</span>`;
+            }
+        }
+
+        function triggerTargetedConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            confetti({
+                particleCount: 20,
+                spread: 60,
+                origin: {
+                    x: (rect.left + rect.width / 2) / window.innerWidth,
+                    y: (rect.top + rect.height / 2) / window.innerHeight
+                },
+                colors: ['#f43f5e', '#10b981', '#fbbf24', '#3b82f6']
+            });
+        }
+
+        function updateStatsUI() {
+            document.getElementById('stat-score').textContent = correctAnswersCount;
+            document.getElementById('stat-streak').textContent = `🔥 ${streak}`;
+        }
+
+        function handleVictoryCelebration() {
+            playSound('victory');
+            closePopover();
+
+            const duration = 6 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 6,
+                    angle: 60,
+                    spread: 60,
+                    origin: { x: 0 },
+                    colors: ['#f43f5e', '#3b82f6', '#10b981', '#fbbf24']
+                });
+                confetti({
+                    particleCount: 6,
+                    angle: 120,
+                    spread: 60,
+                    origin: { x: 1 },
+                    colors: ['#f43f5e', '#3b82f6', '#10b981', '#fbbf24']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        function adjustZoom(delta) {
+            currentZoom = Math.min(Math.max(currentZoom + delta, 0.5), 1.5);
+            const content = document.getElementById('zoomable-content');
+            content.style.transform = `scale(${currentZoom})`;
+            document.getElementById('zoom-indicator').textContent = `${Math.round(currentZoom * 100)}%`;
+            
+            setTimeout(drawNotebookBranches, 150);
+        }
+
+        function resetApp() {
+            streak = 0;
+            correctAnswersCount = 0;
+            switchMode(currentMode);
+        }
+    </script>
+</body>
+</html>
