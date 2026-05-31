@@ -878,6 +878,8 @@
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
+            document.getElementById('stat-total').textContent = Object.keys(nodesData).length;
+
             // Inject Thai names dynamically
             Object.keys(nodesData).forEach(nodeId => {
                 const el = document.getElementById(`n-${nodeId}`);
