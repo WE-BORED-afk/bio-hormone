@@ -878,6 +878,23 @@
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             
+            // Inject Thai names dynamically
+            Object.keys(nodesData).forEach(nodeId => {
+                const el = document.getElementById(`n-${nodeId}`);
+                if (el && nodesData[nodeId].thaiName) {
+                    const thaiEl = document.createElement('div');
+                    thaiEl.className = 'text-[9px] text-slate-500 font-medium leading-tight mt-0.5 node-th-name';
+                    thaiEl.textContent = nodesData[nodeId].thaiName;
+                    
+                    const nameEn = el.querySelector('.name-en');
+                    if (nameEn) {
+                        nameEn.insertAdjacentElement('afterend', thaiEl);
+                    } else {
+                        el.appendChild(thaiEl);
+                    }
+                }
+            });
+
             setTimeout(() => {
                 drawNotebookBranches();
             }, 600);
@@ -903,6 +920,8 @@
                     const el = document.getElementById(`n-${id}`);
                     if (el) {
                         el.classList.remove('quiz-hidden-node', 'glow-active', 'solved-active', 'shake-active');
+                        const check = el.querySelector('.solved-check');
+                        if (check) check.remove();
                     }
                 });
             } else {
@@ -927,6 +946,8 @@
                 if (el) {
                     el.classList.add('quiz-hidden-node');
                     el.classList.remove('glow-active', 'solved-active', 'shake-active');
+                    const check = el.querySelector('.solved-check');
+                    if (check) check.remove();
                 }
             });
         }
@@ -1139,6 +1160,12 @@
                 if (targetEl) {
                     targetEl.classList.remove('quiz-hidden-node', 'glow-active');
                     targetEl.classList.add('solved-active');
+                    if (!targetEl.querySelector('.solved-check')) {
+                        const checkEl = document.createElement('div');
+                        checkEl.className = 'solved-check absolute -top-2 -right-2 bg-emerald-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] shadow-sm z-10';
+                        checkEl.innerHTML = '✔';
+                        targetEl.appendChild(checkEl);
+                    }
                 }
 
                 triggerTargetedConfetti(targetEl);
