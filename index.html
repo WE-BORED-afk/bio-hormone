@@ -1142,6 +1142,7 @@
             if (currentMode === 'study') {
                 document.getElementById('pop-study-view').classList.remove('hidden');
                 document.getElementById('pop-quiz-view').classList.add('hidden');
+                    document.getElementById('pop-quiz-type-view').classList.add('hidden');
 
                 document.getElementById('pop-study-tag').textContent = data.type;
                 document.getElementById('pop-study-en').textContent = data.name;
@@ -1151,6 +1152,7 @@
                 if (quizStatus[nodeId]) {
                     document.getElementById('pop-study-view').classList.remove('hidden');
                     document.getElementById('pop-quiz-view').classList.add('hidden');
+                    document.getElementById('pop-quiz-type-view').classList.add('hidden');
                     document.getElementById('pop-study-tag').textContent = "SOLVED ✔";
                     document.getElementById('pop-study-en').textContent = data.name;
                     document.getElementById('pop-study-th').textContent = data.thaiName;
