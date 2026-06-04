@@ -537,10 +537,15 @@
                     <input id="pop-type-input" type="text" placeholder="พิมพ์คำตอบที่นี่..." autocomplete="off"
                         class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
                         onkeydown="if(event.key==='Enter') submitTypedAnswer()">
-                    <button onclick="submitTypedAnswer()" class="w-full py-2 rounded-xl bg-violet-500 hover:bg-violet-600 text-white text-xs font-bold transition-all duration-150">
-                        ยืนยันคำตอบ
-                    </button>
-                    <div id="pop-type-feedback" class="hidden text-center text-xs font-bold py-1.5 rounded-lg"></div>
+                    <div class="flex gap-2">
+                        <button onclick="submitTypedAnswer()" class="flex-1 py-2 rounded-xl bg-violet-500 hover:bg-violet-600 text-white text-xs font-bold transition-all duration-150">
+                            ยืนยันคำตอบ
+                        </button>
+                        <button onclick="showTypedAnswer()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 text-xs font-bold transition-all duration-150 flex items-center justify-center" title="ดูเฉลย">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div id="pop-type-feedback" class="hidden text-center text-xs font-bold py-1.5 rounded-lg mt-1"></div>
                 </div>
             </div>
         </div>
@@ -1170,6 +1175,21 @@
                     setTimeout(() => document.getElementById('pop-type-input').focus(), 100);
                 }
             }
+        }
+
+        function showTypedAnswer() {
+            if (!activeQuizNodeId) return;
+            const input = document.getElementById('pop-type-input');
+            const feedback = document.getElementById('pop-type-feedback');
+            const correctData = nodesData[activeQuizNodeId];
+            
+            input.value = correctData.name;
+            
+            feedback.innerHTML = `💡 เฉลย: <b>${correctData.name}</b><br><span class="text-[10.5px] font-normal text-indigo-600 mt-1 block">${correctData.thaiName}</span>`;
+            feedback.className = 'text-center text-xs py-2 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-700 shadow-sm leading-tight mt-1';
+            feedback.classList.remove('hidden');
+            
+            lucide.createIcons();
         }
 
         function submitTypedAnswer() {
