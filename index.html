@@ -1172,6 +1172,7 @@
                     document.getElementById('pop-quiz-type-view').classList.remove('hidden');
                     document.getElementById('pop-type-hint').textContent = `คำใบ้: ${data.hint}`;
                     document.getElementById('pop-type-input').value = '';
+                    document.getElementById('pop-type-input').disabled = false;
                     document.getElementById('pop-type-feedback').classList.add('hidden');
                     document.getElementById('pop-type-feedback').textContent = '';
                     setTimeout(() => document.getElementById('pop-type-input').focus(), 100);
