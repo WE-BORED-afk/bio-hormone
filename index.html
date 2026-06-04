@@ -1201,10 +1201,32 @@
 
             if (!typed) return;
 
-            // Fuzzy match: compare lowercased, ignore dots/spaces
-            const normalize = s => s.toLowerCase().replace(/[.\s]/g, '');
-            const isCorrect = normalize(typed) === normalize(correctData.name) ||
-                              normalize(typed) === normalize(correctData.thaiName);
+            // Fuzzy match: extract valid variations
+            const getValidAnswers = (text) => {
+                if (!text) return [];
+                let variants = [];
+                const normText = text.toLowerCase();
+                const alphanumericOnly = s => s.replace(/[^a-z0-9ก-๙]/g, '');
+                
+                variants.push(alphanumericOnly(normText));
+                
+                let noNum = normText.replace(/^\d+\.\s*/, '');
+                variants.push(alphanumericOnly(noNum));
+                
+                let parts = noNum.split(/[;()/]/);
+                parts.forEach(part => {
+                    let p = alphanumericOnly(part);
+                    if (p) variants.push(p);
+                });
+                return variants;
+            };
+
+            const validEn = getValidAnswers(correctData.name);
+            const validTh = getValidAnswers(correctData.thaiName);
+            const validAll = [...validEn, ...validTh];
+            
+            const typedNorm = typed.replace(/[^a-z0-9ก-๙]/g, '');
+            const isCorrect = validAll.includes(typedNorm);
 
             feedback.classList.remove('hidden');
 
