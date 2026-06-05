@@ -232,10 +232,14 @@
                             
                             <!-- ROW 1: Pituitary -->
                             <div class="flex items-center gap-8">
-                                <div id="n-pituitary" onclick="nodeClicked('pituitary', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
-                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">1. Gland</div>
-                                    <div class="name-en">1. Pituitary</div>
-                                    <div class="text-[9px] text-slate-500 font-medium">(Hypothalamus)</div>
+                                <div class="flex flex-col gap-2">
+                                    <div id="n-pituitary" onclick="nodeClicked('pituitary', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                        <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">1. Gland</div>
+                                        <div class="name-en">1. Pituitary</div>
+                                    </div>
+                                    <div id="n-hypothalamus" onclick="nodeClicked('hypothalamus', this)" class="node-base cursor-pointer bg-amber-50/70 hover:bg-amber-100/80 border border-amber-300 border-dashed text-slate-600 p-2 rounded-xl text-center w-52 shadow-sm font-medium text-xs">
+                                        <div class="name-en">(Hypothalamus)</div>
+                                    </div>
                                 </div>
 
                                 <!-- Sub-branches for Pituitary -->
@@ -373,11 +377,21 @@
                                             <span class="name-en">1. cortex</span>
                                         </div>
                                         <div class="flex flex-col gap-2 border-l border-slate-200 pl-4">
-                                            <div id="n-glucocorticoid" onclick="nodeClicked('glucocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
-                                                <span class="name-en">1. glucocorticoid (cortisol)</span>
+                                            <div class="flex flex-col gap-1 mb-1">
+                                                <div id="n-glucocorticoid" onclick="nodeClicked('glucocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                    <span class="name-en">1. glucocorticoid</span>
+                                                </div>
+                                                <div id="n-cortisol" onclick="nodeClicked('cortisol', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 border-dashed text-emerald-700 px-3 py-1 rounded-lg text-xs font-medium w-56 shadow-xs ml-4">
+                                                    <span class="name-en">(cortisol)</span>
+                                                </div>
                                             </div>
-                                            <div id="n-mineralocorticoid" onclick="nodeClicked('mineralocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
-                                                <span class="name-en">2. mineralocorticoid (aldosterone)</span>
+                                            <div class="flex flex-col gap-1 mb-1">
+                                                <div id="n-mineralocorticoid" onclick="nodeClicked('mineralocorticoid', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
+                                                    <span class="name-en">2. mineralocorticoid</span>
+                                                </div>
+                                                <div id="n-aldosterone" onclick="nodeClicked('aldosterone', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 border-dashed text-emerald-700 px-3 py-1 rounded-lg text-xs font-medium w-56 shadow-xs ml-4">
+                                                    <span class="name-en">(aldosterone)</span>
+                                                </div>
                                             </div>
                                             <div id="n-androgen" onclick="nodeClicked('androgen', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
                                                 <span class="name-en">3. androgen</span>
@@ -405,10 +419,14 @@
 
                             <!-- ROW 7: Pancreas -->
                             <div class="flex items-center gap-8">
-                                <div id="n-pancreas" onclick="nodeClicked('pancreas', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
-                                    <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">7. Pancreas</div>
-                                    <div class="name-en">7. Pancreas</div>
-                                    <div class="text-[9px] text-slate-500 font-medium">(Islets of Langerhans)</div>
+                                <div class="flex flex-col gap-2">
+                                    <div id="n-pancreas" onclick="nodeClicked('pancreas', this)" class="node-base cursor-pointer bg-amber-50 hover:bg-amber-100/80 border-2 border-amber-300 text-slate-800 p-3.5 rounded-xl text-center w-52 shadow-sm font-bold text-sm">
+                                        <div class="text-[8px] text-amber-600 uppercase tracking-wider font-semibold">7. Pancreas</div>
+                                        <div class="name-en">7. Pancreas</div>
+                                    </div>
+                                    <div id="n-islets" onclick="nodeClicked('islets', this)" class="node-base cursor-pointer bg-amber-50/70 hover:bg-amber-100/80 border border-amber-300 border-dashed text-slate-600 p-2 rounded-xl text-center w-52 shadow-sm font-medium text-xs">
+                                        <div class="name-en">(Islets of Langerhans)</div>
+                                    </div>
                                 </div>
                                 <div class="flex flex-col gap-2 pl-10">
                                     <div id="n-insulin" onclick="nodeClicked('insulin', this)" class="node-base cursor-pointer bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-900 px-3 py-1.5 rounded-lg text-xs font-semibold w-56 shadow-xs">
@@ -579,98 +597,98 @@
     <script>
         const nodesData = {
             'pituitary': {
-                name: '1. Pituitary',
+                name: 'Pituitary',
                 thaiName: 'ต่อมใต้สมอง (Hypothalamus)',
                 type: 'gland',
                 desc: 'ตั้งอยู่ใต้สมองส่วนหน้า ทำหน้าที่ผลิตและหลั่งฮอร์โมนหลักที่เข้าไปกระตุ้นอวัยวะเป้าหมายและต่อมอื่นๆ',
                 hint: 'ต่อมไร้ท่อระดับผู้ควบคุมหลัก ทำงานสอดคล้องประสานกับไฮโปทาลามัส'
             },
             'anterior': {
-                name: '1. anterior',
+                name: 'anterior',
                 thaiName: 'ต่อมใต้สมองส่วนหน้า',
                 type: 'subdivision',
                 desc: 'สังเคราะห์และหลั่งฮอร์โมนกลุ่มใหญ่ เช่น GH, TSH, ACTH, Prolactin, Endorphin และ Gn (FSH/LH)',
                 hint: 'ส่วนหน้าของต่อมใต้สมอง ผลิตฮอร์โมนส่วนใหญ่ในแผนผังนี้'
             },
             'gh': {
-                name: '1. GH',
+                name: 'GH',
                 thaiName: 'Growth Hormone',
                 type: 'hormone',
                 desc: 'กระตุ้นกระบวนการสะสมโปรตีนและการยืดขยายตัวของกระดูกและกล้ามเนื้อทั่วร่างกาย',
                 hint: 'ฮอร์โมนที่มีบทบาทสำคัญในการควบคุมความสูงและการเติบโตทางร่างกาย'
             },
             'gn': {
-                name: '2. Gn',
+                name: 'Gn',
                 thaiName: 'Gonadotropin',
                 type: 'hormone',
                 desc: 'กลุ่มฮอร์โมนกระตุ้นต่อมสืบพันธุ์ นำไปสู่การสร้างเซลล์สืบพันธุ์และฮอร์โมนเพศหลัก',
                 hint: 'สารฮอร์โมนกระตุ้นต่อมเพศเบื้องต้น แยกออกมาเป็น FSH และ LH'
             },
             'fsh': {
-                name: '1. FSH',
+                name: 'FSH',
                 thaiName: 'Follicle Stimulating Hormone',
                 type: 'hormone',
                 desc: 'ในเพศหญิงช่วยให้ฟอลลิเคิลในรังไข่เติบโต ในเพศชายกระตุ้นท่อสร้างอสุจิให้ผลิตสเปิร์ม',
                 hint: 'ฮอร์โมนเร่งการสุกของเซลล์ไข่และการเจริญพันธุ์ทั่วไป'
             },
             'lh': {
-                name: '2. LH',
+                name: 'LH',
                 thaiName: 'Luteinizing Hormone',
                 type: 'hormone',
                 desc: 'ในหญิงกระตุ้นให้เกิดกระบวนการตกไข่ ในชายกระตุ้นเนื้อเยื่ออินเตอร์สติเชียลให้สร้างฮอร์โมนชาย',
                 hint: 'สารเร่งการตกไข่ และช่วยกระตุ้นการผลิตเทสโทสเตอโรนในอัณฑะ'
             },
             'acth': {
-                name: '3. ACTH',
+                name: 'ACTH',
                 thaiName: 'Adrenocorticotropic Hormone',
                 type: 'hormone',
                 desc: 'กระตุ้นต่อมหมวกไตชั้นนอก (Adrenal Cortex) ให้สร้างสเตียรอยด์คอร์ติซอลออกมาสู้ภัยความเครียด',
                 hint: 'กระตุ้นการทำงานของต่อมหมวกไตเปลือกนอกโดยตรง'
             },
             'tsh': {
-                name: '4. TSH',
+                name: 'TSH',
                 thaiName: 'Thyroid Stimulating Hormone',
                 type: 'hormone',
                 desc: 'คอยส่งสัญญาณกระตุ้นต่อมไทรอยด์ให้ผลิตและหลั่งฮอร์โมนไทรอกซินสำหรับขับเคลื่อนระดับพลังงาน',
                 hint: 'กระตุ้นกระบวนการเผาผลาญอาหารโดยส่งสัญญาณผ่านต่อมไทรอยด์'
             },
             'prolactin': {
-                name: '5. Prolactin',
+                name: 'Prolactin',
                 thaiName: 'โปรแลคติน',
                 type: 'hormone',
                 desc: 'ทำหน้าที่กระตุ้นต่อมน้ำนมในผู้หญิงมีครรภ์ให้มีการผลิตและหลั่งน้ำนมป้อนเด็กทารกหลังคลอด',
                 hint: 'กระตุ้นเต้านมและน้ำนมของมารดาหลังจากการให้กำเนิดบุตร'
             },
             'endorphin': {
-                name: '6. Endorphin',
+                name: 'Endorphin',
                 thaiName: 'เอ็นดอร์ฟิน (สารความสุข)',
                 type: 'hormone',
                 desc: 'ทำหน้าที่ลดความเจ็บปวดและสร้างอารมณ์ผ่อนคลายเบิกบานตามธรรมชาติ หลั่งช่วงออกกำลังกายหนัก',
                 hint: 'ฮอร์โมนแห่งความสุขและสารเคมีบรรเทาปวดที่ร่างกายสร้างขึ้นเอง'
             },
             'posterior': {
-                name: '2. posterior',
+                name: 'posterior',
                 thaiName: 'ต่อมใต้สมองส่วนหลัง',
                 type: 'subdivision',
                 desc: 'เป็นส่วนที่ไม่ได้สร้างฮอร์โมนขึ้นเอง แต่มีหน้าที่กักเก็บและหลั่ง ADH และ Oxytocin ที่รับมาจากสมอง',
                 hint: 'คลังเก็บฮอร์โมนหลักของระบบสมองไฮโปทาลามัส'
             },
             'adh': {
-                name: '1. ADH',
+                name: 'ADH',
                 thaiName: 'Antidiuretic Hormone',
                 type: 'hormone',
                 desc: 'กระตุ้นให้ท่อหน่วยไตดูดกลับน้ำเข้ากระแสเลือดเพื่อลดการสูญเสียน้ำปัสสาวะ และพยุงความดัน',
                 hint: 'ช่วยรักษาน้ำเมื่อร่างกายเสี่ยงขาดน้ำและสูญเสียน้ำปัสสาวะมากเกินไป'
             },
             'oxytocin': {
-                name: '2. Oxytocin',
+                name: 'Oxytocin',
                 thaiName: 'ออกซิโทซิน',
                 type: 'hormone',
                 desc: 'กระตุ้นให้มดลูกเกิดการบีบรัดตัวขณะคลอดบุตร และกระตุ้นต่อมน้ำนมให้พร้อมพุ่งหลั่ง',
                 hint: 'ฮอร์โมนกระตุ้นการคลอดและสารชี้นำความสัมพันธ์ผูกพันภายในครอบครัว'
             },
             'pineal': {
-                name: '2. Pineal',
+                name: 'Pineal',
                 thaiName: 'ต่อมไพเนียล',
                 type: 'gland',
                 desc: 'ต่อมขนาดเล็กใจกลางสมอง ทำหน้าที่แปลระดับกระแสแสงเพื่อช่วยผลิตเมลาโทนินคุมจังหวะชีวิต',
@@ -684,7 +702,7 @@
                 hint: 'ฮอร์โมนที่หลั่งเด่นชัดมากที่สุดในความมืดสงัดเพื่อนำการนอนหลับ'
             },
             'parathyroid': {
-                name: '3. Parathyroid',
+                name: 'Parathyroid',
                 thaiName: 'ต่อมพาราไทรอยด์',
                 type: 'gland',
                 desc: 'ต่อมขนาดเล็กสี่จุดบนหลังไทรอยด์ ควบคุมระดับความเข้มข้นของไอออนแคลเซียมและฟอสเฟต',
@@ -698,28 +716,28 @@
                 hint: 'ฮอร์โมนหลักที่ช่วยสลายกระดูกออกมาเป็นแคลเซียมป้อนกระแสเลือด'
             },
             'thyroid': {
-                name: '4. Thyroid',
+                name: 'Thyroid',
                 thaiName: 'ต่อมไทรอยด์',
                 type: 'gland',
                 desc: 'ต่อมรูปปีกผีเสื้อที่ลำคอ ควบคุมกระบวนการใช้ออกซิเจนและอัตราการเผาผลาญสารอาหารรวมถึงแคลเซียม',
                 hint: 'ต่อมที่คอยควบคุมเมแทบอลิซึมทั่วไป หลั่งไทรอกซินและแคลซิโทนิน'
             },
             'calcitonin': {
-                name: '1. calcitonin',
+                name: 'calcitonin',
                 thaiName: 'แคลซิโทนิน',
                 type: 'hormone',
                 desc: 'คอยดักจับแคลเซียมส่วนเกินในเลือดส่งกลับไปฝากเก็บสะสมเสริมสร้างความหนาแน่นให้กระดูก',
                 hint: 'ฮอร์โมนลดระดับระดับแคลเซียมในกระแสเลือด ทำงานต้านกับ PTH'
             },
             'thyroxin': {
-                name: '2. thyroxin',
+                name: 'thyroxin',
                 thaiName: 'ไทรอกซิน',
                 type: 'hormone',
                 desc: 'ควบคุมเมแทบอลิซึมของพลังงานและมีความจำเป็นต่อโครงสร้างสมอง สติปัญญา และการเจริญของวัยเด็ก',
                 hint: 'โรคคอพอกหรืออาการเอ๋อ (Cretinism) มีความสัมพันธ์กับการบกพร่องสารนี้'
             },
             'thymus': {
-                name: '5. Thymus',
+                name: 'Thymus',
                 thaiName: 'ต่อมไทมัส',
                 type: 'gland',
                 desc: 'ต่อมภูมิคุ้มกันตั้งอยู่ทรวงอกเหนือขั้วหัวใจ คอยกระตุ้นเม็ดเลือดขาวทีเซลล์ช่วงวัยหนุ่มสาว',
@@ -733,91 +751,91 @@
                 hint: 'สารฮอร์โมนขับเคลื่อนกระบวนการสร้างและปรับเม็ดเลือดขาวทีเซลล์สู้ภัยสิ่งแปลกปลอม'
             },
             'adrenal': {
-                name: '6. Adrenal',
+                name: 'Adrenal',
                 thaiName: 'ต่อมหมวกไต',
                 type: 'gland',
                 desc: 'ต่อมรูปหมวกสวมอยู่เหนือขั้วไต ประกอบด้วยเปลือกหมวกนอกและแกนใน ทำหน้าที่ผลักดันการตอบสนองขั้นสูง',
                 hint: 'ต่อมที่ควบคุมการผลิตสเตียรอยด์ต้านเครียดและสารอะดรีนาลีนเร่งอัตราเต้นชีพจร'
             },
             'cortex': {
-                name: '1. cortex',
+                name: 'cortex',
                 thaiName: 'ต่อมหมวกไตส่วนนอก',
                 type: 'subdivision',
                 desc: 'ส่วนนอกสีส้มเหลือง หลั่งกลุ่มสเตียรอยด์ เช่น คอร์ติซอล แอลโดสเตอโรน และฮอร์โมนเพศขั้นต้น',
                 hint: 'ส่วนนอกต่อมหมวกไต ผลิตฮอร์โมนรักษาสมดุลความเค็มและความตึงเครียดระยะยาว'
             },
             'glucocorticoid': {
-                name: '1. glucocorticoid (cortisol)',
+                name: 'glucocorticoid (cortisol)',
                 thaiName: 'กลูโคคอร์ติคอยด์ / คอร์ติซอล',
                 type: 'hormone',
                 desc: 'เพิ่มกลูโคสในกระแสเลือดเพื่อนำพลังงานไปช่วยสู้ภาวะเหนื่อยล้าหรือวิกฤต พร้อมควบคุมระงับปฏิกิริยาอักเสบ',
                 hint: 'ฮอร์โมนความเครียดหลักของสมอง คอยพยุงพลังงานเมื่อร่างกายสะสมแรงกดดันอักเสบ'
             },
             'mineralocorticoid': {
-                name: '2. mineralocorticoid (aldosterone)',
+                name: 'mineralocorticoid (aldosterone)',
                 thaiName: 'มิเนอราโลคอร์ติคอยด์ / แอลโดสเตอโรน',
                 type: 'hormone',
                 desc: 'กระตุ้นให้ไตดึงเกลือโซเดียมคืนและปล่อยสารโพแทสเซียมทิ้งปัสสาวะเพื่อรักษาปริมาตรเลือดและความดัน',
                 hint: 'ฮอร์โมนควบคุมปริมาณความเค็มโซเดียมในเลือดและความดันโลหิต'
             },
             'androgen': {
-                name: '3. androgen',
+                name: 'androgen',
                 thaiName: 'แอนโดรเจน',
                 type: 'hormone',
                 desc: 'สารสเตียรอยด์ต้นกำเนิดฮอร์โมนเพศที่มีบทบาทกระตุ้นลักษณะเพศชายเบื้องต้นก่อนเข้าวัยตกไข่หรือสเปิร์มจริง',
                 hint: 'ฮอร์โมนเพศกระตุ้นเริ่มต้น หลั่งปริมาณน้อยมากที่ต่อมหมวกไตชั้นนอก'
             },
             'medulla': {
-                name: '2. medulla',
+                name: 'medulla',
                 thaiName: 'ต่อมหมวกไตส่วนใน',
                 type: 'subdivision',
                 desc: 'แกนเนื้อเยื่อภายใน ทำงานประสานรับคำสั่งตรงจากระบบประสาทเพื่อสู้ตื่นเต้นตระหนกตกใจฉับพลัน',
                 hint: 'ส่วนในผลิตอะดรีนาลีนพยุงการสู้ภัยพิบัติด่วนทันทีทันควัน'
             },
             'epinephrine': {
-                name: '1. E ; epinephrine',
+                name: 'E ; epinephrine',
                 thaiName: 'เอพิเนฟริน (อะดรีนาลีน)',
                 type: 'hormone',
                 desc: 'กระตุ้นให้หัวใจสูบฉีดเลือดรวดเร็ว ขยายหลอดลมปอด และเร่งตับสลายไกลโคเจนมาเผาผลาญเร่งด่วน',
                 hint: 'สารความตกใจกลัวขีดสุด ทำให้มีพละกำลังยกของหนักเกินกำลังมนุษย์หนีภัยพิบัติ'
             },
             'norepinephrine': {
-                name: '2. NE ; norepinephrine',
+                name: 'NE ; norepinephrine',
                 thaiName: 'นอร์เอพิเนฟริน',
                 type: 'hormone',
                 desc: 'ทำหน้าที่เป็นสารสื่อประสาทและฮอร์โมน บีบเส้นเลือดส่วนปลายเพื่อช่วยยกระดับพยุงรักษาแรงดันความดัน',
                 hint: 'ทำงานประสานสอดคล้องกับอะดรีนาลีน แต่โดดเด่นในด้านการคุมบีบรัดความดันหลอดเลือด'
             },
             'pancreas': {
-                name: '7. Pancreas',
+                name: 'Pancreas',
                 thaiName: 'ตับอ่อน (Islets of Langerhans)',
                 type: 'gland',
                 desc: 'อวัยวะควบคุมระดับความเข้มข้นกลูโคส ประกอบด้วยหมู่เซลล์ Islets of Langerhans หลั่งอินซูลินและกลูคากอน',
                 hint: 'ตั้งอยู่หลังกระเพาะอาหาร มีเนื้อเยื่อผลิตคู่ฮอร์โมนสู้รบระดับน้ำตาลกลูโคส'
             },
             'insulin': {
-                name: '1. Insulin',
+                name: 'Insulin',
                 thaiName: 'อินซูลิน',
                 type: 'hormone',
                 desc: 'หลั่งจาก Beta cells ช่วยกวาดล้างกลูโคสส่วนเกินส่งป้อนเซลล์และตับเก็บเป็นแป้ง เพื่อลดระดับน้ำตาลในเลือด',
                 hint: 'หากร่างกายบกพร่องสารนี้จะส่งผลให้น้ำตาลท่วมกระแสเลือดกลายเป็นโรคเบาหวาน'
             },
             'glucagon': {
-                name: '2. Glucagon',
+                name: 'Glucagon',
                 thaiName: 'กลูคากอน',
                 type: 'hormone',
                 desc: 'หลั่งจาก Alpha cells กระตุ้นตับสลายไกลโคเจนป้อนเป็นกลูโคสในกระแสเลือดเพื่อเพิ่มระดับน้ำตาล',
                 hint: 'ทำงานตรงข้ามอินซูลิน ป้องกันไม่ให้น้ำตาลในเลือดวูบตกช่วงอดอาหารกระทันหัน'
             },
             'gonads': {
-                name: '8. Gonads',
+                name: 'Gonads',
                 thaiName: 'ต่อมเพศ',
                 type: 'gland',
                 desc: 'ต่อมไร้ท่อที่หลั่งฮอร์โมนแสดงสรีระโค้งเว้าเพศหญิงหรือกำลังเพศชาย ร่วมผลิตเซลล์อสุจิและรังไข่',
                 hint: 'แบ่งเป็นระบบรังไข่ในเพศหญิง และระบบอัณฑะในเพศชาย'
             },
             'testis': {
-                name: '1. Testis',
+                name: 'Testis',
                 thaiName: 'อัณฑะ (ต่อมเพศชาย)',
                 type: 'subdivision',
                 desc: 'ต่อมสืบพันธุ์ชาย คอยสร้างสเปิร์มและฮอร์โมนเทสโทสเตอโรนกระตุ้นการมีหนวดเคราและมวลกล้ามเนื้อ',
@@ -831,28 +849,28 @@
                 hint: 'ฮอร์โมนแสดงความเข้มแข็งและเอกลักษณ์ทางกายภาพของเพศชาย'
             },
             'ovary': {
-                name: '2. Ovary',
+                name: 'Ovary',
                 thaiName: 'รังไข่ (ต่อมเพศหญิง)',
                 type: 'subdivision',
                 desc: 'ต่อมสืบพันธุ์สตรี ตกไข่รอบวงเดือนพร้อมสร้างกลุ่มฮอร์โมนความสาว เอสโตรเจน และ โปรเจสเตอโรน',
                 hint: 'ต่อมสำคัญของผู้หญิงในการคุมรอบเดือนและการเจริญพันธุ์ทั่วไป'
             },
             'estrogen': {
-                name: '1. Estrogen',
+                name: 'Estrogen',
                 thaiName: 'เอสโตรเจน',
                 type: 'hormone',
                 desc: 'กระตุ้นสรีระความเป็นหญิง สะโพกผาย คุมการงอกเยื่อบุมดลูกชั้นแรก และแสดงความเป็นสาวพราวเสน่ห์',
                 hint: 'ฮอร์โมนสาวหลักที่ช่วยดูแลความเปล่งปลั่งและผิวพรรณแบบกุลสตรี'
             },
             'progesterone': {
-                name: '2. Progesterone',
+                name: 'Progesterone',
                 thaiName: 'โปรเจสเตอโรน',
                 type: 'hormone',
                 desc: 'เตรียมพร้อมและพยุงชั้นเยื่อบุมดลูกให้หนาฟูเพื่อรอรับการฝังไข่ พร้อมยับยั้งอาการบีบรัดตัวมดลูกช่วงอุ้มครรภ์',
                 hint: 'ฮอร์โมนดูแลรักษาความปลอดภัยเพื่อการฝังตัวของครรภ์ระยะเริ่มต้นไม่ให้แท้งลูกง่าย'
             },
             'placenta': {
-                name: '9. Placenta',
+                name: 'Placenta',
                 thaiName: 'รก',
                 type: 'gland',
                 desc: 'เนื้อเยื่อแลกเปลี่ยนสารอาหารชั่วคราวระหว่างแม่และเด็กช่วงตั้งครรภ์ ทำหน้าที่ผลิตฮอร์โมนพยุงอุ้มชูครรภ์',
@@ -864,6 +882,35 @@
                 type: 'hormone',
                 desc: 'หลั่งออกโดยเนื้อรก คอยกระตุ้นให้รังไข่สร้างโปรเจสเตอโรนพยุงอายุครรภ์ และใช้เป็นตัวบ่งบอกตรวจตั้งครรภ์',
                 hint: 'ฮอร์โมนเด่นชัดที่เครื่องตรวจสอบปัสสาวะจะแจ้งสัญลักษณ์สองขีดเพื่อยืนยันการตั้งครรภ์'
+            }
+
+            'hypothalamus': {
+                name: 'Hypothalamus',
+                thaiName: 'ไฮโปทาลามัส',
+                type: 'gland',
+                desc: 'โครงสร้างประสานงานระหว่างระบบประสาทและระบบต่อมไร้ท่อ',
+                hint: 'สมองส่วนที่ทำหน้าที่เป็นศูนย์กลางควบคุมฮอร์โมนเบื้องต้น'
+            },
+            'islets': {
+                name: 'Islets of Langerhans',
+                thaiName: 'ไอส์เลตออฟแลงเกอร์ฮานส์',
+                type: 'gland',
+                desc: 'กลุ่มเซลล์ในตับอ่อนที่ทำหน้าที่หลั่งฮอร์โมนควบคุมน้ำตาล',
+                hint: 'กลุ่มเซลล์เล็กๆ ในตับอ่อนที่ผลิตอินซูลินและกลูคากอน'
+            },
+            'cortisol': {
+                name: 'cortisol',
+                thaiName: 'คอร์ติซอล',
+                type: 'hormone',
+                desc: 'ฮอร์โมนแห่งความเครียดหลักของร่างกาย ช่วยเพิ่มกลูโคสในเลือด',
+                hint: 'สารความเครียดที่หลั่งเพิ่มขึ้นเมื่อพักผ่อนน้อยหรือกดดัน'
+            },
+            'aldosterone': {
+                name: 'aldosterone',
+                thaiName: 'แอลโดสเตอโรน',
+                type: 'hormone',
+                desc: 'ควบคุมสมดุลน้ำและเกลือแร่ โดยเพิ่มการดูดกลับโซเดียมที่ไต',
+                hint: 'ฮอร์โมนควบคุมความเค็มและความดันเลือด'
             }
         };
 
