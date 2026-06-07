@@ -94,6 +94,10 @@
             color: #065f46 !important;
         }
     </style>
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="min-h-screen flex flex-col pb-12 relative">
 
@@ -1551,6 +1555,210 @@
             switchMode(currentMode);
         }
     </script>
+
+<!-- Floating Donate Banner -->
+<div id="donate-banner" onclick="openDonateModal()" style="
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1.5px solid #fecdd3;
+    border-radius: 14px;
+    padding: 10px 16px 10px 14px;
+    box-shadow: 0 4px 20px rgba(244,63,94,0.15), 0 1px 4px rgba(0,0,0,0.08);
+    font-family: 'Sarabun', sans-serif;
+    animation: donate-slide-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    cursor: pointer;
+">
+    <span style="font-size:1.2rem; line-height:1;">❤️</span>
+    <div style="display:flex; flex-direction:column; gap:1px;">
+        <span style="font-size:0.7rem; font-weight:700; color:#f43f5e; letter-spacing:0.06em; text-transform:uppercase; line-height:1.2;">Donate</span>
+        <span style="font-size:0.65rem; color:#94a3b8; font-weight:500; white-space:nowrap;">ช่วยสนับสนุนผู้สร้าง</span>
+    </div>
+    <button onclick="event.stopPropagation(); document.getElementById('donate-banner').style.display='none'" style="
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #cbd5e1;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0 0 0 4px;
+        transition: color 0.15s;
+        display: flex;
+        align-items: center;
+    " onmouseover="this.style.color='#94a3b8'" onmouseout="this.style.color='#cbd5e1'" title="ปิด">✕</button>
+</div>
+
+<!-- ===== DONATE MODAL ===== -->
+<div id="donate-modal-overlay" onclick="closeDonateModal()" style="
+    display: none;
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sarabun', sans-serif;
+">
+    <div onclick="event.stopPropagation()" style="
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 32px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+        padding: 28px 28px 24px;
+        max-width: 740px;
+        width: calc(100vw - 48px);
+        position: relative;
+        animation: donate-modal-in 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+    ">
+        <!-- Close btn -->
+        <button onclick="closeDonateModal()" style="
+            position: absolute; top: 16px; right: 16px;
+            width: 32px; height: 32px; border-radius: 50%;
+            background: rgba(0,0,0,0.04); border: none; cursor: pointer;
+            color: #64748b; font-size: 1rem; display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s;
+        " onmouseover="this.style.background='rgba(0,0,0,0.08)'" onmouseout="this.style.background='rgba(0,0,0,0.04)'">✕</button>
+
+        <!-- Title -->
+        <div style="text-align:center; margin-bottom:20px;">
+            <span style="font-size:0.7rem; font-weight:700; letter-spacing:0.12em; color:#f43f5e; text-transform:uppercase;">❤️ สนับสนุนผู้สร้าง</span>
+        </div>
+
+        <!-- Main 3-col layout -->
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+
+            <!-- Left: QR -->
+            <div style="flex:0 0 200px;">
+                <img src="assets/donate/qr-payment.jpg" alt="QR PromptPay" style="
+                    width:200px; border-radius:14px;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+                    display:block;
+                ">
+            </div>
+
+            <!-- Center: FOR animation -->
+            <div style="flex:0 0 160px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+                <div id="for-anim" style="display:flex; gap:4px; align-items:center; justify-content:center; height:70px;">
+                    <span class="for-letter" data-chars="F📦" style="
+                        width:60px; text-align:center;
+                        font-size:2.8rem; font-weight:900; font-family:'Arial Black',sans-serif;
+                        color:#1e293b; text-shadow: 0 0 20px rgba(249,115,22,0.3);
+                        display:inline-block;
+                        animation: for-bounce 0.8s ease-in-out infinite alternate;
+                        animation-delay: 0s;
+                    ">F</span>
+                    <span class="for-letter" data-chars="O❤️" style="
+                        width:60px; text-align:center;
+                        font-size:2.8rem; font-weight:900; font-family:'Arial Black',sans-serif;
+                        color:#f97316; text-shadow: 0 0 20px rgba(249,115,22,0.6);
+                        display:inline-block;
+                        animation: for-bounce 0.8s ease-in-out infinite alternate;
+                        animation-delay: 0.15s;
+                    ">O</span>
+                    <span class="for-letter" data-chars="R🌶" style="
+                        width:60px; text-align:center;
+                        font-size:2.8rem; font-weight:900; font-family:'Arial Black',sans-serif;
+                        color:#f43f5e; text-shadow: 0 0 20px rgba(244,63,94,0.6);
+                        display:inline-block;
+                        animation: for-bounce 0.8s ease-in-out infinite alternate;
+                        animation-delay: 0.3s;
+                    ">R</span>
+                </div>
+                <span style="font-size:0.62rem; color:#64748b; letter-spacing:0.06em; text-transform:uppercase; font-weight:600;">donate for</span>
+            </div>
+
+            <!-- Right: Product -->
+            <div style="flex:0 0 220px;">
+                <img src="assets/donate/product.jpg" alt="มะเดี่ยว น้ำพริกหมูกระจก วับวาว" style="
+                    width:100%; max-width:220px; border-radius:14px;
+                    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+                    display:block;
+                ">
+            </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div style="margin-top:22px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px; align-items:center;">
+                <div>
+                    <span style="font-size:0.68rem; color:#64748b; font-weight:600; margin-right:6px;">เป้าหมาย</span>
+                    <span style="font-size:0.68rem; color:#94a3b8; font-weight:500;">0 / 272.09 บาท</span>
+                </div>
+                <span style="font-size:0.68rem; color:#f97316; font-weight:700;" id="donate-pct-label">0%</span>
+            </div>
+            <div style="
+                height: 10px; background: #f1f5f9;
+                border-radius: 999px; overflow: hidden;
+            ">
+                <div id="donate-progress-bar" style="
+                    height: 100%; width: 0%;
+                    background: linear-gradient(90deg, #f97316, #f43f5e);
+                    border-radius: 999px;
+                    transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+                    box-shadow: 0 0 12px rgba(249,115,22,0.5);
+                "></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes donate-slide-in {
+        from { opacity: 0; transform: translateY(20px) scale(0.95); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #donate-banner:hover {
+        box-shadow: 0 6px 24px rgba(244,63,94,0.2), 0 2px 6px rgba(0,0,0,0.08);
+    }
+    @keyframes donate-modal-in {
+        from { opacity: 0; transform: scale(0.88) translateY(24px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes for-bounce {
+        from { transform: translateY(0px) rotate(-3deg); }
+        to   { transform: translateY(-14px) rotate(3deg); }
+    }
+</style>
+
+<script>
+    // FOR letter cycling
+    (function() {
+        const letters = document.querySelectorAll('.for-letter');
+        const cycleMap = { 'F': ['F','📦','F','🎁'], 'O': ['O','❤️','O','🔥'], 'R': ['R','🌶','R','⭐'] };
+        let idx = 0;
+        setInterval(function() {
+            idx++;
+            letters.forEach(function(el) {
+                const base = el.getAttribute('data-chars').charAt(0);
+                const opts = cycleMap[base];
+                el.textContent = opts[idx % opts.length];
+            });
+        }, 600);
+    })();
+
+    function openDonateModal() {
+        const overlay = document.getElementById('donate-modal-overlay');
+        overlay.style.display = 'flex';
+        // Animate progress bar after short delay
+        setTimeout(function() {
+            document.getElementById('donate-progress-bar').style.width = '0%';
+        }, 200);
+    }
+    function closeDonateModal() {
+        const overlay = document.getElementById('donate-modal-overlay');
+        overlay.style.display = 'none';
+        // Reset bar for next open
+        document.getElementById('donate-progress-bar').style.width = '0%';
+    }
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDonateModal();
+    });
+</script>
 
 <!-- impeccable-live-start -->
 <script src="http://localhost:8400/live.js"></script>
